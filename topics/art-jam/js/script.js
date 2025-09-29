@@ -17,13 +17,26 @@
 
 "use strict";
 
+
+
+let img;
+
+// Load the image.
+function preload() {
+    img = loadImage('/assets/images/baby.png');
+}
+
+
+
 /**
  * I'm setting up a white blank canvas for the background of the petals.
 */
+
 function setup() {
 
     createCanvas(700, 700);
     background('#111111');
+
 
 }
 
@@ -32,5 +45,20 @@ function setup() {
  * OOPS I DIDN'T DESCRIBE WHAT MY DRAW DOES!
 */
 function draw() {
+
+
+    rotate(45);
+
+    let angle = frameCount * 0.01;
+
+  rotate(angle);
+
+
+    image(img, 0, 0);
+    img.resize(1000, 0);
+
+
+
+
 
 }
