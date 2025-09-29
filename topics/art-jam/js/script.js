@@ -10,7 +10,7 @@
  * is a visual representation of different facets of my individual although not directly referencing them; they flow in fluctuating
  * rhythms to highlight its ever-changing quality and they all rotate around an invisible circle which represents the core/soul.
  * The blurred effect of holding unto a petal is to replicate the ephemeral and, again, ever-changing quality of how I may
- * associate things/body/ideas to my being, but may also lose them over time.
+ * associate things/body/ideas to my being, but may also lose them over time as I grow older. The portrait is portrayed as a flower.
  * 
  * 
  */
@@ -18,9 +18,12 @@
 "use strict";
 
 /**
- * OH LOOK I DIDN'T DESCRIBE SETUP!!
+ * I'm setting up a white blank canvas for the background of the petals.
 */
 function setup() {
+
+    createCanvas(700, 700);
+    background('#111111');
 
 }
 
