@@ -55,7 +55,8 @@ function setup() {
 */
 function draw() {
 
-    background(0)
+    background(0);
+    push();
 
     translate(500, 340);
     fill(355);
@@ -63,39 +64,46 @@ function draw() {
     let angle = frameCount * 0.02;
     rotate(angle);
 
-    image(babyfaceimg, 50, 40, 0, 0);
+    pop();
+    petal1();
+petal2();
+petal3();
+petal4();
+petal5();
+petal6();
+
+
+
+
+}
+
+
+
+function petal1() {
+
+    push();
+    translate(40, 40);
+
+    let angle = frameCount * 0.01;
+    rotate(angle);
+
+    image(babyfaceimg, 40, 40, 0, 0);
     babyfaceimg.resize(200, 200);
+    pop();
+}
 
-     image(dadimg, 50, 40, 0, 0);
+
+function petal2() {
+
+    push();
+    translate(500, 340);
+
+    let angle = frameCount * 0.01;
+    rotate(angle);
+
+    image(dadimg, 50, 40, 0, 0);
     dadimg.resize(200, 200);
-
-
-     image(jamiewaveimg, 50, 40, 0, 0);
-    jamiewaveimg.resize(200, 200);
-
-
-
-     image(momimg, 50, 40, 0, 0);
-    momimg.resize(200, 200);
-
-
-
-     image(plantsimg, 50, 40, 0, 0);
-    plantsimg.resize(200, 200);
-
-
-     image(redleafimg, 50, 40, 0, 0);
-    redleafimg.resize(200, 200);
-
-
-
+    pop();
 }
 
-
-
-function draw() {
-
-
-    
-}
 
