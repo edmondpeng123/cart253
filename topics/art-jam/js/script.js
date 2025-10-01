@@ -19,9 +19,7 @@
 
 
 let earimg = {
-   
-  
-
+ 
 }
 let eyebrowimg = {
 
@@ -36,7 +34,7 @@ let noseimg = {
 
 }
 
-// Load the image.
+// Loading the images in assets.
 function preload() {
 
 
@@ -51,7 +49,7 @@ function preload() {
 
 
 /**
- * I'm setting up a white blank canvas for the background of the petals.
+ * I'm setting up a white blank canvas for the background of the bubbles.
 */
 
 function setup() {
@@ -68,13 +66,22 @@ function draw() {
 
     background('#ffffffff');
 
-
+    /**
+     * Added the lines on x and y axis
+    */
     let mx = mouseX - 0;
-  // Draw the line.
-  line(mx, -50, mx, 1000);
+    line(mx, -50, mx, 1000);
 
-  let my = mouseY - 0;
-  line(1000, my, -50, my);
+    let my = mouseY - 0;
+    line(1000, my, -50, my);
+
+   // if ((mouseX = earimg.x) (mouseY = earimg.y)) {
+    //    scale(1.5)
+   // }
+
+   // else {
+   //     scale(1)
+   // }
 
     // translate(500, 340);
     //  fill(355);
@@ -88,12 +95,13 @@ function draw() {
     me4();
     me5();
 
-
-
 }
 
 
 
+/**
+ * added the first bubble and made it a rotate animation
+*/
 function me1() {
 
     push();
@@ -104,13 +112,16 @@ function me1() {
     let angle = frameCount * 0.013;
     rotate(angle);
 
-
+  
     image(earimg, 50, 40, 0, 0);
-    earimg.resize(120, 120);
+    earimg.resize(165, 165);
 
     pop();
 }
 
+/**
+ * added the second bubble and made it a rotate animation
+*/
 function me2() {
 
     push();
@@ -124,6 +135,9 @@ function me2() {
     pop();
 }
 
+/**
+ * added the third bubble and made it a rotate animation
+*/
 function me3() {
 
     push();
@@ -137,6 +151,9 @@ function me3() {
     pop();
 }
 
+/**
+ * added the fourth bubble and made it a rotate animation
+*/
 function me4() {
 
     push();
@@ -146,10 +163,13 @@ function me4() {
     rotate(angle);
 
     image(mouthimg, 50, 40, 0, 0);
-    mouthimg.resize(160, 160);
+    mouthimg.resize(180, 180);
     pop();
 }
 
+/**
+ * added the fifth bubble and made it a rotate animation
+*/
 function me5() {
 
     push();
@@ -163,6 +183,14 @@ function me5() {
     pop();
 }
 
-function mousePressed() {
+
+function mouseClicked() {
+  if (value === 0) {
+    value = 255;
+  } else {
+    value = 0;
+  }
 
 }
+
+
