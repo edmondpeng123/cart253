@@ -17,12 +17,12 @@
 
 "use strict";
 
-
+let angle = 0;
 
 let img;
-
 // Load the image.
 function preload() {
+
     img = loadImage('/assets/images/baby.png');
 }
 
@@ -33,9 +33,8 @@ function preload() {
 */
 
 function setup() {
-
-    createCanvas(700, 700);
-    background('#111111');
+    createCanvas(1000, 700);
+    angleMode(DEGREES);
 
 
 }
@@ -46,16 +45,18 @@ function setup() {
 */
 function draw() {
 
+background(0)
 
-    rotate(45);
-
-    let angle = frameCount * 0.01;
-
+translate(400,400);
   rotate(angle);
+fill(355);
+ellipseMode(CENTER);
+  ellipse(0, 0, 80, 40);
+//  image(img, 0, 0);
+  //  img.resize(1000, 0);
+angle + angle + 1;
 
 
-    image(img, 0, 0);
-    img.resize(1000, 0);
 
 
 
