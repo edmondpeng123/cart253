@@ -75,14 +75,6 @@ function draw() {
   //  let angle = frameCount * 0.02;
   //  rotate(angle);
 
-
-petal1();
-petal2();
-petal3();
-petal4();
-petal5();
-petal6();
-
 me1();
 me2();
 me3();
@@ -95,97 +87,16 @@ me5();
 
 
 
-function petal1() {
-
-    push();
-    translate(500, 340);
-
-    let angle = frameCount * 0.010;
-    rotate(angle);
-
-    image(babyfaceimg, 50, 40, 0, 0);
-    babyfaceimg.resize(200, 260);
-    pop();
-}
-
-
-function petal2() {
-
-    push();
-    translate(500, 340);
-
-    let angle = frameCount * 0.020;
-    rotate(angle);
-
-    image(dadimg, 50, 40, 0, 0);
-    dadimg.resize(200, 260);
-    pop();
-}
-
-
-function petal3() {
-
-    push();
-    translate(500, 340);
-
-    let angle = frameCount * 0.030;
-    rotate(angle);
-
-    image(jamiewaveimg, 50, 40, 0, 0);
-    jamiewaveimg.resize(200, 260);
-    pop();
-}
-
-function petal4() {
-
-    push();
-    translate(500, 340);
-
-    let angle = frameCount * 0.040;
-    rotate(angle);
-
-    image(momimg, 50, 40, 0, 0);
-    momimg.resize(200, 260);
-    pop();
-}
-
-function petal5() {
-
-    push();
-    translate(500, 340);
-
-    let angle = frameCount * 0.050;
-    rotate(angle);
-
-    image(plantsimg, 50, 40, 0, 0);
-    plantsimg.resize(200, 260);
-    pop();
-}
-
-function petal6() {
-
-    push();
-    translate(500, 340);
-
-    let angle = frameCount * 0.060;
-    rotate(angle);
-
-    image(redleafimg, 50, 40, 0, 0);
-    redleafimg.resize(200, 260);
-    pop();
-}
-
-
 function me1() {
 
     push();
     translate(500, 340);
 
-    let angle = frameCount * 0.010;
+    let angle = frameCount * 0.013;
     rotate(angle);
 
     image(earimg, 50, 40, 0, 0);
-    earimg.resize(200, 200);
+    earimg.resize(120, 120);
     pop();
 }
 
@@ -194,11 +105,11 @@ function me2() {
     push();
     translate(500, 340);
 
-    let angle = frameCount * 0.010;
+    let angle = frameCount * 0.016;
     rotate(angle);
 
-    image(earimg, 50, 40, 0, 0);
-    earimg.resize(200, 200);
+    image(noseimg, 50, 40, 0, 0);
+    noseimg.resize(230, 230);
     pop();
 }
 
@@ -207,11 +118,11 @@ function me3() {
     push();
     translate(500, 340);
 
-    let angle = frameCount * 0.010;
+    let angle = frameCount * 0.018;
     rotate(angle);
 
-    image(earimg, 50, 40, 0, 0);
-    earimg.resize(200, 200);
+    image(eyebrowimg, 50, 40, 0, 0);
+    eyebrowimg.resize(200, 200);
     pop();
 }
 
@@ -220,11 +131,11 @@ function me4() {
     push();
     translate(500, 340);
 
-    let angle = frameCount * 0.010;
+    let angle = frameCount * 0.026;
     rotate(angle);
 
-    image(earimg, 50, 40, 0, 0);
-    earimg.resize(200, 200);
+    image(mouthimg, 50, 40, 0, 0);
+    mouthimg.resize(250, 250);
     pop();
 }
 
@@ -233,11 +144,11 @@ function me5() {
     push();
     translate(500, 340);
 
-    let angle = frameCount * 0.010;
+    let angle = frameCount * 0.032;
     rotate(angle);
 
-    image(earimg, 50, 40, 0, 0);
-    earimg.resize(200, 200);
+    image(handimg, 50, 40, 0, 0);
+    handimg.resize(120, 120);
     pop();
 }
 
