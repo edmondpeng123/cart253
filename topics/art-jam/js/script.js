@@ -17,7 +17,7 @@
 
 "use strict";
 
-let babyimg
+
 let babyfaceimg
 let dadimg
 let jamiewaveimg
@@ -28,7 +28,6 @@ let redleafimg
 // Load the image.
 function preload() {
 
-    babyimg = loadImage('/assets/images/baby.png');
     babyfaceimg = loadImage('/assets/images/babyface.png');
     dadimg = loadImage('/assets/images/dad.png');
     jamiewaveimg = loadImage('/assets/images/jamiewave.png');
@@ -58,22 +57,45 @@ function draw() {
 
     background(0)
 
-    translate(500, 320);
+    translate(500, 340);
     fill(355);
 
-    let angle = frameCount * 0.05;
+    let angle = frameCount * 0.02;
     rotate(angle);
 
-    ellipse(100, 100, 200, 80);
+    image(babyfaceimg, 50, 40, 0, 0);
+    babyfaceimg.resize(200, 200);
 
-    image(babyimg, 200, 200, 0, 0);
-
-
-
-
+     image(dadimg, 50, 40, 0, 0);
+    dadimg.resize(200, 200);
 
 
+     image(jamiewaveimg, 50, 40, 0, 0);
+    jamiewaveimg.resize(200, 200);
+
+
+
+     image(momimg, 50, 40, 0, 0);
+    momimg.resize(200, 200);
+
+
+
+     image(plantsimg, 50, 40, 0, 0);
+    plantsimg.resize(200, 200);
+
+
+     image(redleafimg, 50, 40, 0, 0);
+    redleafimg.resize(200, 200);
 
 
 
 }
+
+
+
+function draw() {
+
+
+    
+}
+
