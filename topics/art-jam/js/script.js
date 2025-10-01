@@ -17,13 +17,25 @@
 
 "use strict";
 
-let angle = 0;
+let babyimg
+let babyfaceimg
+let dadimg
+let jamiewaveimg
+let momimg
+let plantsimg
+let redleafimg
 
-let img;
 // Load the image.
 function preload() {
 
-    img = loadImage('/assets/images/baby.png');
+    babyimg = loadImage('/assets/images/baby.png');
+    babyfaceimg = loadImage('/assets/images/babyface.png');
+    dadimg = loadImage('/assets/images/dad.png');
+    jamiewaveimg = loadImage('/assets/images/jamiewave.png');
+    momimg = loadImage('/assets/images/mom.png');
+    plantsimg = loadImage('/assets/images/plants.png');
+    redleafimg = loadImage('/assets/images/redleaf.png');
+
 }
 
 
@@ -34,7 +46,6 @@ function preload() {
 
 function setup() {
     createCanvas(1000, 700);
-    angleMode(DEGREES);
 
 
 }
@@ -45,16 +56,19 @@ function setup() {
 */
 function draw() {
 
-background(0)
+    background(0)
 
-translate(400,400);
-  rotate(angle);
-fill(355);
-ellipseMode(CENTER);
-  ellipse(0, 0, 80, 40);
-//  image(img, 0, 0);
-  //  img.resize(1000, 0);
-angle + angle + 1;
+    translate(500, 320);
+    fill(355);
+
+    let angle = frameCount * 0.05;
+    rotate(angle);
+
+    ellipse(100, 100, 200, 80);
+
+    image(babyimg, 200, 200, 0, 0);
+
+
 
 
 
