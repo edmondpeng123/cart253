@@ -18,28 +18,27 @@
 "use strict";
 
 
-let babyfaceimg
-let dadimg
-let jamiewaveimg
-let momimg
-let plantsimg
-let redleafimg
+let earimg = {
+   
+  
 
-let earimg
-let eyebrowimg
-let handimg
-let mouthimg
-let noseimg
+}
+let eyebrowimg = {
+
+}
+let handimg = {
+
+}
+let mouthimg = {
+
+}
+let noseimg = {
+
+}
 
 // Load the image.
 function preload() {
 
-    babyfaceimg = loadImage('/assets/images/babyface.png');
-    dadimg = loadImage('/assets/images/dad.png');
-    jamiewaveimg = loadImage('/assets/images/jamiewave.png');
-    momimg = loadImage('/assets/images/mom.png');
-    plantsimg = loadImage('/assets/images/plants.png');
-    redleafimg = loadImage('/assets/images/redleaf.png');
 
     earimg = loadImage('/assets/images/ear.png');
     eyebrowimg = loadImage('/assets/images/eyebrow.png');
@@ -69,17 +68,25 @@ function draw() {
 
     background('#ffffffff');
 
-   // translate(500, 340);
-  //  fill(355);
 
-  //  let angle = frameCount * 0.02;
-  //  rotate(angle);
+    let mx = mouseX - 0;
+  // Draw the line.
+  line(mx, -50, mx, 1000);
 
-me1();
-me2();
-me3();
-me4();
-me5();
+  let my = mouseY - 0;
+  line(1000, my, -50, my);
+
+    // translate(500, 340);
+    //  fill(355);
+
+    //  let angle = frameCount * 0.02;
+    //  rotate(angle);
+
+    me1();
+    me2();
+    me3();
+    me4();
+    me5();
 
 
 
@@ -92,11 +99,15 @@ function me1() {
     push();
     translate(500, 340);
 
+
+
     let angle = frameCount * 0.013;
     rotate(angle);
 
+
     image(earimg, 50, 40, 0, 0);
     earimg.resize(120, 120);
+
     pop();
 }
 
@@ -118,7 +129,7 @@ function me3() {
     push();
     translate(500, 340);
 
-    let angle = frameCount * 0.018;
+    let angle = frameCount * 0.020;
     rotate(angle);
 
     image(eyebrowimg, 50, 40, 0, 0);
@@ -135,7 +146,7 @@ function me4() {
     rotate(angle);
 
     image(mouthimg, 50, 40, 0, 0);
-    mouthimg.resize(250, 250);
+    mouthimg.resize(160, 160);
     pop();
 }
 
@@ -152,3 +163,6 @@ function me5() {
     pop();
 }
 
+function mousePressed() {
+
+}
