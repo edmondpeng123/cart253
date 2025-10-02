@@ -17,36 +17,59 @@
 
 "use strict";
 
+let earimg1 = null
+let eyebrowimg1 = null
+let handimg1 = null
+let mouthimg1 = null
+let noseimg1 = null
+
+
 
 let earimg = {
-    size:1,
+    size:165,
+    x:50,
+    y:40,
+    hover:false,
 }
 let eyebrowimg = {
+    size:200,
+    x:50,
+    y:40,
+    hover:false,
 
 }
 let handimg = {
+    size:120,
+    x:50,
+    y:40,
+    hover:false,
 
 }
 let mouthimg = {
+    size:220,
+    x:50,
+    y:40,
+    hover:false,
 
 }
 let noseimg = {
+    size:140,
+    x:50,
+    y:40,
+    hover:false,
 
 }
 
-let hover = false
-
-let earimgX, earimgY, earimgWidth, earimgHeight;
 
 // Loading the images in assets.
 function preload() {
 
 
-    earimg = loadImage('/assets/images/ear.png');
-    eyebrowimg = loadImage('/assets/images/eyebrow.png');
-    handimg = loadImage('/assets/images/hand.png');
-    mouthimg = loadImage('/assets/images/mouth.png');
-    noseimg = loadImage('/assets/images/nose.png');
+    earimg1 = loadImage('/assets/images/ear.png');
+    eyebrowimg1 = loadImage('/assets/images/eyebrow.png');
+    handimg1 = loadImage('/assets/images/hand.png');
+    mouthimg1 = loadImage('/assets/images/mouth.png');
+    noseimg1 = loadImage('/assets/images/nose.png');
 
 }
 
@@ -58,6 +81,7 @@ function preload() {
 
 function setup() {
     createCanvas(1000, 700);
+    imageMode(CENTER);
 
 
 }
@@ -112,20 +136,38 @@ function draw() {
 function me1() {
 
     push();
-    translate(500, 340);
+   // translate(500, 340);
 
 
 
     let angle = frameCount * 0.013;
-    rotate(angle);
+   //rotate(angle);
 
+    earimg.y = cos(-angle)*200 + 340
+    earimg.x = sin(-angle)*200 + 500
+    translate(earimg.x, earimg.y)
+rotate(angle)
+ // Apply filter or draw original based on hover state
+  if (earimg.hover===true) {
+    // Apply a filter, e.g., blur
+// earimg.resize(200,200);
+  
+     image(earimg1, 0, 0, earimg.size, earimg.size);
+    filter(BLUR);
+  } else {
+    // Draw the original image
 
-    image(earimg, 50, 40, 165, 165);
+      image(earimg1, 0, 0, earimg.size, earimg.size);
+  }
+  fill(255,0,0);
+   ellipse(0,0,20,20)
+   pop();
+}
+
+  
 
     //earimg.resize(165,165);
 
-    pop();
-}
 
 /**
  * added the second bubble and made it a rotate animation
@@ -138,7 +180,7 @@ function me2() {
     let angle = frameCount * 0.016;
     rotate(angle);
 
-    image(noseimg, 50, 40, 230, 230);
+    image(noseimg1, 50, 40, 230, 230);
    // noseimg.resize(230, 230);
     pop();
 }
@@ -154,7 +196,7 @@ function me3() {
     let angle = frameCount * 0.020;
     rotate(angle);
 
-    image(eyebrowimg, 50, 40, 200, 200);
+    image(eyebrowimg1, 50, 40, 200, 200);
    // eyebrowimg.resize(200, 200);
     pop();
 }
@@ -170,7 +212,7 @@ function me4() {
     let angle = frameCount * 0.026;
     rotate(angle);
 
-    image(mouthimg, 50, 40, 180, 180);
+    image(mouthimg1, 50, 40, 180, 180);
    // mouthimg.resize(180, 180);
     pop();
 }
@@ -187,7 +229,7 @@ function me5() {
     rotate(angle);
 
 
-    image(handimg, 50, 40, 120, 120);
+    image(handimg1, 50, 40, 120, 120);
    // handimg.resize(120, 120);
     pop();
 }
@@ -195,20 +237,13 @@ function me5() {
 
 function hoverstate() {
 
- if (mouseX > earimgX && mouseX < earimgX + earimgWidth && mouseY > earimgY && mouseY < earimgY + earimgHeight) {
-    hover = true;
+
+    let distance = dist(earimg.x, earimg.y, mouseX, mouseY)
+
+ if (distance<earimg.size/2) {
+    earimg.hover = true;
   } else {
-    hover = false;
-  }
-  // Apply filter or draw original based on hover state
-  if (hover) {
-    // Apply a filter, e.g., blur
-    img.filter(BLUR);
-    img.size(2);
-    image(earimg, earimgX, earimgY);
-  } else {
-    // Draw the original image
-    image(earimg, earimgX, earimgY);
+   earimg.hover = false;
   }
 }
 
