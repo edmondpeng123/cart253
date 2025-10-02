@@ -59,11 +59,11 @@ let noseimg = {
 function preload() {
 
 
-    earimg1 = loadImage('/assets/images/ear.png');
-    eyebrowimg1 = loadImage('/assets/images/eyebrow.png');
-    handimg1 = loadImage('/assets/images/hand.png');
-    mouthimg1 = loadImage('/assets/images/mouth.png');
-    noseimg1 = loadImage('/assets/images/nose.png');
+    earimg1 = loadImage('../assets/images/ear.png');
+    eyebrowimg1 = loadImage('../assets/images/eyebrow.png');
+    handimg1 = loadImage('../assets/images/hand.png');
+    mouthimg1 = loadImage('../assets/images/mouth.png');
+    noseimg1 = loadImage('../assets/images/nose.png');
 
 }
 
