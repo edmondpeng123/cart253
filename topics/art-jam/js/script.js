@@ -125,6 +125,10 @@ function draw() {
     me4();
     me5();
     hoverstate();
+    hoverstate2();
+    hoverstate3();
+    hoverstate4();
+    hoverstate5();
 
 }
 
@@ -175,51 +179,152 @@ rotate(angle)
 function me2() {
 
     push();
-    translate(500, 340);
+   // translate(500, 340);
+
 
     let angle = frameCount * 0.016;
-    rotate(angle);
+   // rotate(angle);
 
-    image(noseimg1, 50, 40, 230, 230);
+     noseimg.y = cos(-angle)*200 + 340
+    noseimg.x = sin(-angle)*200 + 500
+    translate(noseimg.x, noseimg.y)
+rotate(angle)
+
+
+  if (noseimg.hover===true) {
+    // Apply a filter, e.g., blur
+// earimg.resize(200,200);
+  scale(2,2);
+     image(noseimg1, 0, 0, noseimg.size, noseimg.size);
+    filter(DILATE);
+    
+  } else {
+    // Draw the original image
+ image(noseimg1, 0, 0, noseimg.size, noseimg.size);
+
    // noseimg.resize(230, 230);
-    pop();
+   
 }
-
+ fill(255,0,0);
+   ellipse(0,0,20,20)
+ pop();
+}
 /**
  * added the third bubble and made it a rotate animation
 */
+
+
+
+
+
+
+
 function me3() {
 
     push();
-    translate(500, 340);
+   // translate(500, 340);
 
     let angle = frameCount * 0.020;
-    rotate(angle);
+   // rotate(angle);
 
-    image(eyebrowimg1, 50, 40, 200, 200);
-   // eyebrowimg.resize(200, 200);
-    pop();
+     eyebrowimg.y = cos(-angle)*200 + 340
+    eyebrowimg.x = sin(-angle)*200 + 500
+    translate(eyebrowimg.x, eyebrowimg.y)
+rotate(angle)
+
+
+  if (eyebrowimg.hover===true) {
+    // Apply a filter, e.g., blur
+// earimg.resize(200,200);
+  scale(1.5,1.5);
+     image(eyebrowimg1, 0, 0, eyebrowimg.size, eyebrowimg.size);
+    filter(INVERT);
+    
+  } else {
+    // Draw the original image
+ image(eyebrowimg1, 0, 0, eyebrowimg.size, eyebrowimg.size);
+
+   // noseimg.resize(230, 230);
+   
 }
+ fill(255,0,0);
+   ellipse(0,0,20,20)
+ pop();
+}
+
+   // eyebrowimg.resize(200, 200);
+ 
+
 
 /**
  * added the fourth bubble and made it a rotate animation
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function me4() {
 
     push();
-    translate(500, 340);
+    //translate(500, 340);
 
     let angle = frameCount * 0.026;
-    rotate(angle);
+   // rotate(angle);
 
-    image(mouthimg1, 50, 40, 180, 180);
+
+     mouthimg.y = cos(-angle)*200 + 340
+    mouthimg.x = sin(-angle)*200 + 500
+    translate(mouthimg.x, mouthimg.y)
+rotate(angle)
+
+
+  if (mouthimg.hover===true) {
+    // Apply a filter, e.g., blur
+// earimg.resize(200,200);
+  scale(1.5,1.5);
+     image(mouthimg1, 0, 0, mouthimg.size, mouthimg.size);
+    filter(INVERT);
+    
+  } else {
+    // Draw the original image
+ image(mouthimg1, 0, 0, mouthimg.size, mouthimg.size);
+
+   // noseimg.resize(230, 230);
+   
+}
+ fill(255,0,0);
+   ellipse(0,0,20,20)
+ pop();
+
    // mouthimg.resize(180, 180);
-    pop();
 }
 
 /**
  * added the fifth bubble and made it a rotate animation
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
 function me5() {
 
     push();
@@ -235,8 +340,22 @@ function me5() {
 }
 
 
-function hoverstate() {
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function hoverstate() {
 
     let distance = dist(earimg.x, earimg.y, mouseX, mouseY)
 
@@ -244,6 +363,62 @@ function hoverstate() {
     earimg.hover = true;
   } else {
    earimg.hover = false;
+  }
+
+
+}
+
+
+function hoverstate2() {
+
+   let distance2 = dist(noseimg.x, noseimg.y, mouseX, mouseY)
+
+ if (distance2<noseimg.size/2) {
+    noseimg.hover = true;
+  } else {
+   noseimg.hover = false;
+  }
+}
+
+
+
+
+function hoverstate3() {
+
+   let distance3 = dist(eyebrowimg.x, eyebrowimg.y, mouseX, mouseY)
+
+ if (distance3<eyebrowimg.size/2) {
+    eyebrowimg.hover = true;
+  } else {
+   eyebrowimg.hover = false;
+  }
+}
+
+
+
+
+
+
+function hoverstate4() {
+   let distance4 = dist(handimg.x, handimg.y, mouseX, mouseY)
+
+ if (distance4<handimg.size/2) {
+    handimg.hover = true;
+  } else {
+   handimg.hover = false;
+  }
+}
+
+
+
+function hoverstate5() {
+
+   let distance5 = dist(mouthimg.x, mouthimg.y, mouseX, mouseY)
+
+ if (distance5<mouthimg.size/2) {
+    mouthimg.hover = true;
+  } else {
+   mouthimg.hover = false;
   }
 }
 
