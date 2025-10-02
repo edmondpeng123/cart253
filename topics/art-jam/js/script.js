@@ -19,7 +19,7 @@
 
 
 let earimg = {
- 
+    size:1,
 }
 let eyebrowimg = {
 
@@ -33,6 +33,10 @@ let mouthimg = {
 let noseimg = {
 
 }
+
+let hover = false
+
+let earimgX, earimgY, earimgWidth, earimgHeight;
 
 // Loading the images in assets.
 function preload() {
@@ -75,6 +79,8 @@ function draw() {
     let my = mouseY - 0;
     line(1000, my, -50, my);
 
+
+
    // if ((mouseX = earimg.x) (mouseY = earimg.y)) {
     //    scale(1.5)
    // }
@@ -94,6 +100,7 @@ function draw() {
     me3();
     me4();
     me5();
+    hoverstate();
 
 }
 
@@ -112,9 +119,10 @@ function me1() {
     let angle = frameCount * 0.013;
     rotate(angle);
 
-  
-    image(earimg, 50, 40, 0, 0);
-    earimg.resize(165, 165);
+
+    image(earimg, 50, 40, 165, 165);
+
+    //earimg.resize(165,165);
 
     pop();
 }
@@ -130,8 +138,8 @@ function me2() {
     let angle = frameCount * 0.016;
     rotate(angle);
 
-    image(noseimg, 50, 40, 0, 0);
-    noseimg.resize(230, 230);
+    image(noseimg, 50, 40, 230, 230);
+   // noseimg.resize(230, 230);
     pop();
 }
 
@@ -146,8 +154,8 @@ function me3() {
     let angle = frameCount * 0.020;
     rotate(angle);
 
-    image(eyebrowimg, 50, 40, 0, 0);
-    eyebrowimg.resize(200, 200);
+    image(eyebrowimg, 50, 40, 200, 200);
+   // eyebrowimg.resize(200, 200);
     pop();
 }
 
@@ -162,8 +170,8 @@ function me4() {
     let angle = frameCount * 0.026;
     rotate(angle);
 
-    image(mouthimg, 50, 40, 0, 0);
-    mouthimg.resize(180, 180);
+    image(mouthimg, 50, 40, 180, 180);
+   // mouthimg.resize(180, 180);
     pop();
 }
 
@@ -178,19 +186,30 @@ function me5() {
     let angle = frameCount * 0.032;
     rotate(angle);
 
-    image(handimg, 50, 40, 0, 0);
-    handimg.resize(120, 120);
+
+    image(handimg, 50, 40, 120, 120);
+   // handimg.resize(120, 120);
     pop();
 }
 
 
-function mouseClicked() {
-  if (value === 0) {
-    value = 255;
-  } else {
-    value = 0;
-  }
+function hoverstate() {
 
+ if (mouseX > earimgX && mouseX < earimgX + earimgWidth && mouseY > earimgY && mouseY < earimgY + earimgHeight) {
+    hover = true;
+  } else {
+    hover = false;
+  }
+  // Apply filter or draw original based on hover state
+  if (hover) {
+    // Apply a filter, e.g., blur
+    img.filter(BLUR);
+    img.size(2);
+    image(earimg, earimgX, earimgY);
+  } else {
+    // Draw the original image
+    image(earimg, earimgX, earimgY);
+  }
 }
 
 
