@@ -163,8 +163,7 @@ rotate(angle)
 
       image(earimg1, 0, 0, earimg.size, earimg.size);
   }
-  fill(255,0,0);
-   ellipse(0,0,20,20)
+ 
    pop();
 }
 
@@ -205,8 +204,7 @@ rotate(angle)
    // noseimg.resize(230, 230);
    
 }
- fill(255,0,0);
-   ellipse(0,0,20,20)
+
  pop();
 }
 /**
@@ -247,8 +245,7 @@ rotate(angle)
    // noseimg.resize(230, 230);
    
 }
- fill(255,0,0);
-   ellipse(0,0,20,20)
+
  pop();
 }
 
@@ -291,9 +288,8 @@ rotate(angle)
   if (mouthimg.hover===true) {
     // Apply a filter, e.g., blur
 // earimg.resize(200,200);
-  scale(1.5,1.5);
+  scale(0.5,0.5);
      image(mouthimg1, 0, 0, mouthimg.size, mouthimg.size);
-    filter(INVERT);
     
   } else {
     // Draw the original image
@@ -302,8 +298,6 @@ rotate(angle)
    // noseimg.resize(230, 230);
    
 }
- fill(255,0,0);
-   ellipse(0,0,20,20)
  pop();
 
    // mouthimg.resize(180, 180);
@@ -328,16 +322,43 @@ rotate(angle)
 function me5() {
 
     push();
-    translate(500, 340);
+   // translate(500, 340);
 
     let angle = frameCount * 0.032;
-    rotate(angle);
+  //  rotate(angle);
+
+  handimg.y = cos(-angle)*200 + 340
+    handimg.x = sin(-angle)*200 + 500
+    translate(handimg.x, handimg.y)
+rotate(angle)
 
 
-    image(handimg1, 50, 40, 120, 120);
-   // handimg.resize(120, 120);
-    pop();
+  if (handimg.hover===true) {
+    // Apply a filter, e.g., blur
+// earimg.resize(200,200);
+  scale(1.5,1.5);
+  filter(INVERT)
+     image(handimg1, 0, 0, handimg.size, handimg.size);
+    
+  } else {
+    // Draw the original image
+ image(handimg1, 0, 0, handimg.size, handimg.size);
+
+   // noseimg.resize(230, 230);
+   
 }
+ pop();
+
+   // mouthimg.resize(180, 180);
+}
+
+
+
+
+   
+   // handimg.resize(120, 120);
+  
+
 
 
 
