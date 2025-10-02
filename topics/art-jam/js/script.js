@@ -1,5 +1,5 @@
 /**
- * Digital Avatar
+ * Fragments of the Self
  * Edmond Peng
  * 
  * This is an experimental visual representation of my identity on the digital platform as well as a reflection of our place
@@ -55,7 +55,7 @@ let noseimg = {
 }
 
 
-// Loading the images in assets.
+// Loading the images in assets - created all assets using my own photos and photoshop bitmap effect.
 function preload() {
 
 
@@ -68,9 +68,8 @@ function preload() {
 }
 
 
-
 /**
- * I'm setting up a white blank canvas for the background of the bubbles.
+ * I'm setting up a white blank canvas for the background of the bubbles and centering image.
 */
 
 function setup() {
@@ -82,7 +81,7 @@ function setup() {
 
 
 /**
- * OOPS I DIDN'T DESCRIBE WHAT MY DRAW DOES!
+ * adding lines on x and y axis to portray the camera-like interface, reminiscent of the controlled surveillance on the web
 */
 function draw() {
 
@@ -124,14 +123,16 @@ function me1() {
 
 
 
-
     let angle = frameCount * 0.013;
 
+//calculating the rotation translation effect with the trigonometric formula, thank you so much Sabine for the help ; translating the
+//bubble so that it is centered to the canvas
 
     earimg.y = cos(-angle) * 200 + 340
     earimg.x = sin(-angle) * 200 + 500
     translate(earimg.x, earimg.y)
     rotate(angle)
+
     // Apply filter or draw original based on hover state
     if (earimg.hover === true) {
 
@@ -139,15 +140,12 @@ function me1() {
         image(earimg1, 0, 0, earimg.size, earimg.size);
         filter(BLUR);
     } else {
-        // Draw the original image
 
         image(earimg1, 0, 0, earimg.size, earimg.size);
     }
 
     pop();
 }
-
-
 
 
 
@@ -189,8 +187,6 @@ function me2() {
 /**
  * added the third bubble and made it a rotate animation
 */
-
-
 
 
 
@@ -267,17 +263,6 @@ function me4() {
 
 }
 
-/**
- * added the fifth bubble and made it a rotate animation
-*/
-
-
-
-
-
-
-
-
 
 
 
@@ -318,22 +303,7 @@ function me5() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//making the hover state for the mouse to register for each bubbles
 
 function hoverstate() {
 

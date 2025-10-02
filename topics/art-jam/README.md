@@ -1,35 +1,44 @@
-# TITLE OF PROJECT
+# Fragments of the Self
 
-AUTHOR NAME
+Edmond Peng
 
-[View this project online](URL_FOR_THE_RUNNING_PROJECT)
+[View this project online]()
 
 ## Description
 
-This description should help the reader understand what the program is, anything they should know to be able to experience it (controls, special features, etc.), and what the desired user experience is. For example:
-
-> *The Mayor of Clown Town* is a simulator experience that allows the user to control a small town populated entirely by clowns.
-
-> The experience is controlled via the mouse, with left click selecting a clown and bringing up a menu of options such as "slip of banana peel" or "get into impossible capacious clown-car."
-
-> The project is meant to give the user a sense of what it would be the mayor of a town of clowns, eventually getting the sense that clowns are not taking their civic duties seriously.
+This project is a representation of our fragmented self-image within the digital space. The user can interact with each bitmapped bubbles by hovering the mouse on them and triggering different types of effects.
 
 ## Screenshot(s)
 
-This bit should have some images of the program running so that the reader has a sense of what it looks like. For example:
+Each assets are photos that I took on my camcorder and transferred into Photoshop to apply a bitmapped effect; I then took out the white background using color range to make it translucent and emphasize the layering of each bubbles - further pushing the narrative of deconstruction or construction of identity on the web.
 
-> ![Image of a clown face](./assets/images/clown.png)
+> ![Image of an ear](./assets/images/ear.png)
+![Image of an eyebrow](./assets/images/eyebrow.png)
+![Image of an hand](./assets/images/hand.png)
+![Image of an mouth](./assets/images/mouth.png)
+![Image of an nose](./assets/images/nose.png)
 
 ## Attribution
 
-This bit should attribute any code, assets or other elements used taken from other sources. For example:
+https://p5js.org/reference/p5/p5.Image/
+Used this source to learn how to load images properly.
+
+https://p5js.org/reference/p5/ellipse/
+Used this source for creating shapes.
+
+https://p5js.org/reference/p5/rotate/
+Used this source to rotate the bubbles; eventually found out that it is not very convenient and not optimal for hover effect. Sabine fixed the distance of the bubbles for me (THANK YOU SABINE ONCE AGAIN)
+
+https://p5js.org/reference/p5.Image/resize/
+Used this source to resize images, eventually found out it's useless, but still.
+
+https://p5js.org/reference/p5/mouseX/
+Used this source for the creation of the line.
+
+https://p5js.org/reference/p5/filter/
+Used this source for the filters on the bubbles.
+
 
 > - This project uses [p5.js](https://p5js.org).
-> - The clown image is a capture of the clown from the Apple emoji character set.
-> - The barking sound effect is "single dog bark 1" by crazymonke9 from freesound.org: https://freesound.org/people/crazymonke9/sounds/418107/
 
-## License
 
-This bit should include the license you want to apply to your work. For example:
-
-> This project is licensed under a Creative Commons Attribution ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)) license with the exception of libraries and other components with their own licenses.
