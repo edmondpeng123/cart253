@@ -26,37 +26,37 @@ let noseimg1 = null
 
 
 let earimg = {
-    size:165,
-    x:50,
-    y:40,
-    hover:false,
+    size: 165,
+    x: 50,
+    y: 40,
+    hover: false,
 }
 let eyebrowimg = {
-    size:200,
-    x:50,
-    y:40,
-    hover:false,
+    size: 200,
+    x: 50,
+    y: 40,
+    hover: false,
 
 }
 let handimg = {
-    size:120,
-    x:50,
-    y:40,
-    hover:false,
+    size: 120,
+    x: 50,
+    y: 40,
+    hover: false,
 
 }
 let mouthimg = {
-    size:220,
-    x:50,
-    y:40,
-    hover:false,
+    size: 220,
+    x: 50,
+    y: 40,
+    hover: false,
 
 }
 let noseimg = {
-    size:140,
-    x:50,
-    y:40,
-    hover:false,
+    size: 140,
+    x: 50,
+    y: 40,
+    hover: false,
 
 }
 
@@ -105,19 +105,6 @@ function draw() {
 
 
 
-   // if ((mouseX = earimg.x) (mouseY = earimg.y)) {
-    //    scale(1.5)
-   // }
-
-   // else {
-   //     scale(1)
-   // }
-
-    // translate(500, 340);
-    //  fill(355);
-
-    //  let angle = frameCount * 0.02;
-    //  rotate(angle);
 
     me1();
     me2();
@@ -140,36 +127,35 @@ function draw() {
 function me1() {
 
     push();
-   // translate(500, 340);
+
 
 
 
     let angle = frameCount * 0.013;
-   //rotate(angle);
 
-    earimg.y = cos(-angle)*200 + 340
-    earimg.x = sin(-angle)*200 + 500
+
+    earimg.y = cos(-angle) * 200 + 340
+    earimg.x = sin(-angle) * 200 + 500
     translate(earimg.x, earimg.y)
-rotate(angle)
- // Apply filter or draw original based on hover state
-  if (earimg.hover===true) {
-    // Apply a filter, e.g., blur
-// earimg.resize(200,200);
-  
-     image(earimg1, 0, 0, earimg.size, earimg.size);
-    filter(BLUR);
-  } else {
-    // Draw the original image
+    rotate(angle)
+    // Apply filter or draw original based on hover state
+    if (earimg.hover === true) {
 
-      image(earimg1, 0, 0, earimg.size, earimg.size);
-  }
- 
-   pop();
+
+        image(earimg1, 0, 0, earimg.size, earimg.size);
+        filter(BLUR);
+    } else {
+        // Draw the original image
+
+        image(earimg1, 0, 0, earimg.size, earimg.size);
+    }
+
+    pop();
 }
 
-  
 
-    //earimg.resize(165,165);
+
+
 
 
 /**
@@ -178,34 +164,33 @@ rotate(angle)
 function me2() {
 
     push();
-   // translate(500, 340);
+
 
 
     let angle = frameCount * 0.016;
-   // rotate(angle);
 
-     noseimg.y = cos(-angle)*200 + 340
-    noseimg.x = sin(-angle)*200 + 500
+
+    noseimg.y = cos(-angle) * 200 + 340
+    noseimg.x = sin(-angle) * 200 + 500
     translate(noseimg.x, noseimg.y)
-rotate(angle)
+    rotate(angle)
 
 
-  if (noseimg.hover===true) {
-    // Apply a filter, e.g., blur
-// earimg.resize(200,200);
-  scale(2,2);
-     image(noseimg1, 0, 0, noseimg.size, noseimg.size);
-    filter(DILATE);
-    
-  } else {
-    // Draw the original image
- image(noseimg1, 0, 0, noseimg.size, noseimg.size);
+    if (noseimg.hover === true) {
 
-   // noseimg.resize(230, 230);
-   
-}
+        scale(2, 2);
+        image(noseimg1, 0, 0, noseimg.size, noseimg.size);
+        filter(DILATE);
 
- pop();
+    } else {
+
+        image(noseimg1, 0, 0, noseimg.size, noseimg.size);
+
+
+
+    }
+
+    pop();
 }
 /**
  * added the third bubble and made it a rotate animation
@@ -220,87 +205,72 @@ rotate(angle)
 function me3() {
 
     push();
-   // translate(500, 340);
+
 
     let angle = frameCount * 0.020;
-   // rotate(angle);
 
-     eyebrowimg.y = cos(-angle)*200 + 340
-    eyebrowimg.x = sin(-angle)*200 + 500
+
+    eyebrowimg.y = cos(-angle) * 200 + 340
+    eyebrowimg.x = sin(-angle) * 200 + 500
     translate(eyebrowimg.x, eyebrowimg.y)
-rotate(angle)
+    rotate(angle)
 
 
-  if (eyebrowimg.hover===true) {
-    // Apply a filter, e.g., blur
-// earimg.resize(200,200);
-  scale(1.5,1.5);
-     image(eyebrowimg1, 0, 0, eyebrowimg.size, eyebrowimg.size);
-    filter(INVERT);
-    
-  } else {
-    // Draw the original image
- image(eyebrowimg1, 0, 0, eyebrowimg.size, eyebrowimg.size);
+    if (eyebrowimg.hover === true) {
 
-   // noseimg.resize(230, 230);
-   
+        scale(1.5, 1.5);
+        image(eyebrowimg1, 0, 0, eyebrowimg.size, eyebrowimg.size);
+        filter(INVERT);
+
+    } else {
+
+        image(eyebrowimg1, 0, 0, eyebrowimg.size, eyebrowimg.size);
+
+
+
+    }
+
+    pop();
 }
 
- pop();
-}
 
-   // eyebrowimg.resize(200, 200);
- 
 
 
 /**
  * added the fourth bubble and made it a rotate animation
 */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 function me4() {
 
     push();
-    //translate(500, 340);
+
 
     let angle = frameCount * 0.026;
-   // rotate(angle);
 
 
-     mouthimg.y = cos(-angle)*200 + 340
-    mouthimg.x = sin(-angle)*200 + 500
+
+    mouthimg.y = cos(-angle) * 200 + 340
+    mouthimg.x = sin(-angle) * 200 + 500
     translate(mouthimg.x, mouthimg.y)
-rotate(angle)
+    rotate(angle)
 
 
-  if (mouthimg.hover===true) {
-    // Apply a filter, e.g., blur
-// earimg.resize(200,200);
-  scale(0.5,0.5);
-     image(mouthimg1, 0, 0, mouthimg.size, mouthimg.size);
-    
-  } else {
-    // Draw the original image
- image(mouthimg1, 0, 0, mouthimg.size, mouthimg.size);
+    if (mouthimg.hover === true) {
 
-   // noseimg.resize(230, 230);
-   
-}
- pop();
 
-   // mouthimg.resize(180, 180);
+        scale(0.5, 0.5);
+        image(mouthimg1, 0, 0, mouthimg.size, mouthimg.size);
+
+    } else {
+
+        image(mouthimg1, 0, 0, mouthimg.size, mouthimg.size);
+
+
+
+    }
+    pop();
+
+
 }
 
 /**
@@ -322,42 +292,39 @@ rotate(angle)
 function me5() {
 
     push();
-   // translate(500, 340);
 
     let angle = frameCount * 0.032;
-  //  rotate(angle);
 
-  handimg.y = cos(-angle)*200 + 340
-    handimg.x = sin(-angle)*200 + 500
+
+    handimg.y = cos(-angle) * 200 + 340
+    handimg.x = sin(-angle) * 200 + 500
     translate(handimg.x, handimg.y)
-rotate(angle)
+    rotate(angle)
 
 
-  if (handimg.hover===true) {
-    // Apply a filter, e.g., blur
-// earimg.resize(200,200);
-  scale(1.5,1.5);
-  filter(INVERT)
-     image(handimg1, 0, 0, handimg.size, handimg.size);
-    
-  } else {
-    // Draw the original image
- image(handimg1, 0, 0, handimg.size, handimg.size);
+    if (handimg.hover === true) {
 
-   // noseimg.resize(230, 230);
-   
+
+        scale(1.5, 1.5);
+        filter(INVERT)
+        image(handimg1, 0, 0, handimg.size, handimg.size);
+
+    } else {
+
+        image(handimg1, 0, 0, handimg.size, handimg.size);
+
+
+
+    }
+    pop();
+
+
 }
- pop();
-
-   // mouthimg.resize(180, 180);
-}
 
 
 
 
-   
-   // handimg.resize(120, 120);
-  
+
 
 
 
@@ -380,11 +347,11 @@ function hoverstate() {
 
     let distance = dist(earimg.x, earimg.y, mouseX, mouseY)
 
- if (distance<earimg.size/2) {
-    earimg.hover = true;
-  } else {
-   earimg.hover = false;
-  }
+    if (distance < earimg.size / 2) {
+        earimg.hover = true;
+    } else {
+        earimg.hover = false;
+    }
 
 
 }
@@ -392,13 +359,13 @@ function hoverstate() {
 
 function hoverstate2() {
 
-   let distance2 = dist(noseimg.x, noseimg.y, mouseX, mouseY)
+    let distance2 = dist(noseimg.x, noseimg.y, mouseX, mouseY)
 
- if (distance2<noseimg.size/2) {
-    noseimg.hover = true;
-  } else {
-   noseimg.hover = false;
-  }
+    if (distance2 < noseimg.size / 2) {
+        noseimg.hover = true;
+    } else {
+        noseimg.hover = false;
+    }
 }
 
 
@@ -406,13 +373,13 @@ function hoverstate2() {
 
 function hoverstate3() {
 
-   let distance3 = dist(eyebrowimg.x, eyebrowimg.y, mouseX, mouseY)
+    let distance3 = dist(eyebrowimg.x, eyebrowimg.y, mouseX, mouseY)
 
- if (distance3<eyebrowimg.size/2) {
-    eyebrowimg.hover = true;
-  } else {
-   eyebrowimg.hover = false;
-  }
+    if (distance3 < eyebrowimg.size / 2) {
+        eyebrowimg.hover = true;
+    } else {
+        eyebrowimg.hover = false;
+    }
 }
 
 
@@ -421,26 +388,26 @@ function hoverstate3() {
 
 
 function hoverstate4() {
-   let distance4 = dist(handimg.x, handimg.y, mouseX, mouseY)
+    let distance4 = dist(handimg.x, handimg.y, mouseX, mouseY)
 
- if (distance4<handimg.size/2) {
-    handimg.hover = true;
-  } else {
-   handimg.hover = false;
-  }
+    if (distance4 < handimg.size / 2) {
+        handimg.hover = true;
+    } else {
+        handimg.hover = false;
+    }
 }
 
 
 
 function hoverstate5() {
 
-   let distance5 = dist(mouthimg.x, mouthimg.y, mouseX, mouseY)
+    let distance5 = dist(mouthimg.x, mouthimg.y, mouseX, mouseY)
 
- if (distance5<mouthimg.size/2) {
-    mouthimg.hover = true;
-  } else {
-   mouthimg.hover = false;
-  }
+    if (distance5 < mouthimg.size / 2) {
+        mouthimg.hover = true;
+    } else {
+        mouthimg.hover = false;
+    }
 }
 
 
