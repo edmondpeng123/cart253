@@ -25,8 +25,8 @@ const ball = {
     width: 10,
     height: 10,
     velocity: {
-        x: 0,
-        y: 10
+        x: (1, 10),
+        y: (-10, -1)
     }
 };
 
@@ -65,6 +65,17 @@ function draw() {
  * Moves the paddle
  */
 function movePaddle(paddle) {
+    if (keyCode === LEFT_ARROW) {
+        paddle.x -= 5;
+    } else if (keyCode === RIGHT_ARROW) {
+        paddle.x += 5;
+    }
+
+    if (paddle.x > (width - paddle.width / 2)) {
+        paddle.x -= 5;
+    } else if (paddle.x < (0 + paddle.width / 2)) {
+        paddle.x += 5;
+    }
 
 }
 
@@ -72,14 +83,20 @@ function movePaddle(paddle) {
  * Moves the ball passed in as a parameter
  */
 function moveBall(ball) {
-
+    ball.x += ball.velocity.x;
+    ball.y += ball.velocity.y;
 }
 
 /**
  * Bounces the provided ball off the provided paddle
  */
 function handleBounce(ball, paddle) {
-
+    if (ball.x < 10 || ball.x > 600 - 10) {
+        ball.velocity.x *= -1;
+    }
+    if (ball.y < 10 || ball.y > 600 - 10) {
+        ball.velocity.y *= -1;
+    }
 }
 
 /**
@@ -113,8 +130,8 @@ function drawBall(ball) {
  * x,y coordinates.
  */
 function checkOverlap(rectA, rectB) {
-  return (rectA.x + rectA.width/2 > rectB.x - rectB.width/2 &&
-          rectA.x - rectA.width/2 < rectB.x + rectB.width/2 &&
-          rectA.y + rectA.height/2 > rectB.y - rectB.height/2 &&
-          rectA.y - rectA.height/2 < rectB.y + rectB.height/2);
+    return (rectA.x + rectA.width / 2 > rectB.x - rectB.width / 2 &&
+        rectA.x - rectA.width / 2 < rectB.x + rectB.width / 2 &&
+        rectA.y + rectA.height / 2 > rectB.y - rectB.height / 2 &&
+        rectA.y - rectA.height / 2 < rectB.y + rectB.height / 2);
 }
