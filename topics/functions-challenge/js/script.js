@@ -25,8 +25,8 @@ const ball = {
     width: 10,
     height: 10,
     velocity: {
-        x: (1, 10),
-        y: (-10, -1)
+        x: 4,
+        y: 1
     }
 };
 
@@ -59,6 +59,7 @@ function draw() {
 
     drawPaddle(paddle);
     drawBall(ball);
+    
 }
 
 /**
@@ -85,18 +86,23 @@ function movePaddle(paddle) {
 function moveBall(ball) {
     ball.x += ball.velocity.x;
     ball.y += ball.velocity.y;
+
+      if (ball.x < 10 || ball.x > 600 - 10) {
+        ball.velocity.x *= -1;
+    }
+    if (ball.y < 10 || ball.y > 600 - 10) {
+        ball.velocity.y *= -1;
+    }
 }
 
 /**
  * Bounces the provided ball off the provided paddle
  */
 function handleBounce(ball, paddle) {
-    if (ball.x < 10 || ball.x > 600 - 10) {
-        ball.velocity.x *= -1;
-    }
-    if (ball.y < 10 || ball.y > 600 - 10) {
-        ball.velocity.y *= -1;
-    }
+  if (checkOverlap(ball,paddle)) {
+    ball.velocity.y *= -1
+
+  }
 }
 
 /**
