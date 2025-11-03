@@ -20,7 +20,7 @@ const frog = {
     // The frog's body has a position and size
     body: {
         x: 320,
-        y: 520,
+        y: 700,
         size: 150,
         width: 10
     },
@@ -36,28 +36,40 @@ const frog = {
 };
 
 // Our fly
-// Has a position, size, and speed of horizontal movement
+// Has a position, size, and speed of vertical movement
 const fly = {
-    x: 0,
+    x: 20,
     y: 200, // Will be random
-    size: 10,
+    size: 20,
     speed: 3
 };
+
+//this is a log
+//has similar position and speed to the fly, but it's rectangular
+const log = {
+    x: 20,
+    y: 200,
+    w: 50,
+    h: 100,
+    speed: 4
+}
 
 /**
  * Creates the canvas and initializes the fly
  */
 function setup() {
-    createCanvas(640, 480);
+    createCanvas(900, 700);
 
     // Give the fly its first random position
     resetFly();
+    resetLog();
 }
 
 function draw() {
     background("#87ceeb");
     moveFly();
     drawFly();
+    drawLog();
     moveFrog();
     moveTongue();
     drawFrog();
@@ -70,12 +82,21 @@ function draw() {
  */
 function moveFly() {
     // Move the fly
-    fly.x += fly.speed;
+    fly.y += fly.speed;
     // Handle the fly going off the canvas
     if (fly.x > width) {
         resetFly();
     }
+
+    if (fly.y > width) {
+        resetFly();
+    }
 }
+
+
+
+
+
 
 /**
  * Draws the fly as a black circle
@@ -88,27 +109,42 @@ function drawFly() {
     pop();
 }
 
+//Draws the log as a brown rectangle
+function drawLog() {
+    push();
+    noStroke();
+    fill("#473535ff");
+    rect(log.x, log.y, log.w, log.h);
+    pop();
+}
+
+function resetLog() {
+    log.y = 0;
+    log.x = random(50, 700);
+}
+
 /**
- * Resets the fly to the left with a random y
+ * Resets the fly to the left with a random x
  */
 function resetFly() {
-    fly.x = 0;
-    fly.y = random(0, 300);
+    fly.y = 0;
+    fly.x = random(100, 600);
 }
 
 /**
  * Moves the frog smoothly on the x axis by pressing on the left/right arrow, also stops it when it reaches the sides of the canva
  */
 function moveFrog() {
+
     if (keyCode === LEFT_ARROW) {
         frog.body.x -= 5;
     } else if (keyCode === RIGHT_ARROW) {
         frog.body.x += 5;
     }
 
-    if (frog.body.x > (width - frog.body.size / 2.5)) {
+    if (frog.body.x > (width - frog.body.size / 2)) {
         frog.body.x -= 5;
-    } else if (frog.body.x < (0 + frog.body.size / 2.5)) {
+    } else if (frog.body.x < (0 + frog.body.size / 2)) {
         frog.body.x += 5;
     }
 
@@ -119,7 +155,10 @@ function moveFrog() {
  */
 function moveTongue() {
     // Tongue matches the frog's x
+
     frog.tongue.x = frog.body.x;
+
+
     // If the tongue is idle, it doesn't do anything
     if (frog.tongue.state === "idle") {
         // Do nothing
@@ -175,7 +214,7 @@ function checkTongueFlyOverlap() {
     // Get distance from tongue to fly
     const d = dist(frog.tongue.x, frog.tongue.y, fly.x, fly.y);
     // Check if it's an overlap
-    const eaten = (d < frog.tongue.size/2 + fly.size/2);
+    const eaten = (d < frog.tongue.size / 2 + fly.size / 2);
     if (eaten) {
         // Reset the fly
         resetFly();
