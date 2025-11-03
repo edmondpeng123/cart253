@@ -21,14 +21,14 @@ const frog = {
     body: {
         x: 320,
         y: 700,
-        size: 150,
+        size: 120,
         width: 10
     },
     // The frog's tongue has a position, size, speed, and state
     tongue: {
         x: undefined,
         y: 480,
-        size: 20,
+        size: 40,
         speed: 20,
         // Determines how the tongue moves each frame
         state: "idle" // State can be: idle, outbound, inbound
@@ -37,20 +37,37 @@ const frog = {
 
 // Our fly
 // Has a position, size, and speed of vertical movement
-const fly = {
+const firstFly = {
     x: 20,
     y: 200, // Will be random
     size: 20,
     speed: 3
 };
 
+//second fly that will go in different speed, also different size
+const secondFly = {
+    x: 20,
+    y: 200, // Will be random
+    size: 40,
+    speed: 6
+};
+
+//third fly that will go in different speed, also different size
+const thirdFly = {
+    x: 20,
+    y: 200, // Will be random
+    size: 15,
+    speed: 5
+};
+
+
 //this is a log
 //has similar position and speed to the fly, but it's rectangular
 const log = {
     x: 20,
     y: 200,
-    w: 50,
-    h: 100,
+    w: 60,
+    h: 150,
     speed: 4
 }
 
@@ -61,36 +78,44 @@ function setup() {
     createCanvas(900, 700);
 
     // Give the fly its first random position
-    resetFly();
+    resetFly(firstFly);
+     resetFly(secondFly);
+      resetFly(thirdFly);
     resetLog();
 }
 
 function draw() {
     background("#87ceeb");
-    moveFly();
+    moveFly(firstFly);
+    moveFly(secondFly);
+    moveFly(thirdFly);
     moveLog();
-    drawFly();
+    drawFly(firstFly);
+    drawFly(secondFly);
+    drawFly(thirdFly);
     drawLog();
     moveFrog();
     moveTongue();
     drawFrog();
-    checkTongueFlyOverlap();
+    checkTongueFlyOverlap(firstFly);
+    checkTongueFlyOverlap(secondFly);
+    checkTongueFlyOverlap(thirdFly);
 }
 
 /**
  * Moves the fly according to its speed
  * Resets the fly if it gets all the way to the bottom
  */
-function moveFly() {
+function moveFly(fly) {
     // Move the fly
     fly.y += fly.speed;
     // Handle the fly going off the canvas
     if (fly.x > width) {
-        resetFly();
+        resetFly(fly);
     }
 
     if (fly.y > width) {
-        resetFly();
+        resetFly(fly);
     }
 }
 
@@ -120,7 +145,7 @@ function moveLog() {
 /**
  * Draws the fly as a black circle
  */
-function drawFly() {
+function drawFly(fly) {
     push();
     noStroke();
     fill("#000000");
@@ -137,15 +162,16 @@ function drawLog() {
     pop();
 }
 
+//resets the log to the top with a random x, the y is negative because log is long so it needs to smooth in the frame...
 function resetLog() {
-    log.y = 0;
+    log.y = -80;
     log.x = random(50, 700);
 }
 
 /**
- * Resets the fly to the left with a random x
+ * Resets the fly to the top with a random x
  */
-function resetFly() {
+function resetFly(fly) {
     fly.y = 0;
     fly.x = random(100, 600);
 }
@@ -156,15 +182,15 @@ function resetFly() {
 function moveFrog() {
 
     if (keyCode === LEFT_ARROW) {
-        frog.body.x -= 5;
+        frog.body.x -= 6;
     } else if (keyCode === RIGHT_ARROW) {
-        frog.body.x += 5;
+        frog.body.x += 6;
     }
 
     if (frog.body.x > (width - frog.body.size / 2)) {
-        frog.body.x -= 5;
+        frog.body.x -= 6;
     } else if (frog.body.x < (0 + frog.body.size / 2)) {
-        frog.body.x += 5;
+        frog.body.x += 6;
     }
 
 }
@@ -229,14 +255,14 @@ function drawFrog() {
 /**
  * Handles the tongue overlapping the fly
  */
-function checkTongueFlyOverlap() {
+function checkTongueFlyOverlap(fly) {
     // Get distance from tongue to fly
     const d = dist(frog.tongue.x, frog.tongue.y, fly.x, fly.y);
     // Check if it's an overlap
     const eaten = (d < frog.tongue.size / 2 + fly.size / 2);
     if (eaten) {
         // Reset the fly
-        resetFly();
+        resetFly(fly);
         // Bring back the tongue
         frog.tongue.state = "inbound";
     }
@@ -250,3 +276,4 @@ function mousePressed() {
         frog.tongue.state = "outbound";
     }
 }
+
