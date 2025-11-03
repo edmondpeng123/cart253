@@ -156,12 +156,21 @@ function moveLog() {
 
 /**
  * Draws the fly as a black circle
+ * added little wings on them
  */
 function drawFly(fly) {
     push();
     noStroke();
-    fill("#000000ff");
+  
+
+     fill("#d2d5c8ff");
+    ellipse(fly.x + 20, fly.y, fly.size + 10);
+      ellipse(fly.x - 20, fly.y, fly.size + 10);
+
+        fill("#000000ff");
     ellipse(fly.x, fly.y, fly.size);
+
+
     pop();
 }
 
@@ -171,6 +180,13 @@ function drawLog() {
     noStroke();
     fill("#473535ff");
     rect(log.x, log.y, log.w, log.h);
+
+    fill("#9f9f71ff");
+ellipse(log.x + 30, log.y, 61)
+
+   fill("#473535ff");
+ellipse(log.x + 30, log.y + 140, 61)
+
     pop();
 }
 
