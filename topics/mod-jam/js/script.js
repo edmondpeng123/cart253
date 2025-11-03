@@ -64,6 +64,15 @@ const thirdFly = {
 };
 
 
+//special speedy rare bee will fly horizontally and give more points
+const bee = {
+    x: 20,
+    y: 200, // Will be random
+    size: 20,
+    speed: 9,
+};
+
+
 //this is a log
 //has similar position and speed to the fly, but it's rectangular
 const log = {
@@ -80,10 +89,12 @@ const log = {
 function setup() {
     createCanvas(900, 700);
 
+
     // Give the fly its first random position
     resetFly(firstFly);
      resetFly(secondFly);
       resetFly(thirdFly);
+resetBee();
     resetLog();
 }
 
@@ -93,6 +104,8 @@ function draw() {
     moveFly(secondFly);
     moveFly(thirdFly);
     moveLog();
+    moveBee();
+    drawBee();
     drawFly(firstFly);
     drawFly(secondFly);
     drawFly(thirdFly);
@@ -106,6 +119,7 @@ function draw() {
     checkTongueFlyOverlap(firstFly);
     checkTongueFlyOverlap(secondFly);
     checkTongueFlyOverlap(thirdFly);
+    checkTongueBeeOverlap();
 }
 
 /**
@@ -122,6 +136,19 @@ function moveFly(fly) {
 
     if (fly.y > width) {
         resetFly(fly);
+    }
+}
+
+function moveBee() {
+    // Move the fly
+    bee.x += bee.speed;
+
+       if (bee.x > width) {
+        resetBee();
+    }
+
+    if (bee.y > width) {
+        resetBee();
     }
 }
 
@@ -151,9 +178,6 @@ function moveLog() {
 
 
 
-
-
-
 /**
  * Draws the fly as a black circle
  * added little wings on them
@@ -172,6 +196,24 @@ function drawFly(fly) {
 
 
     pop();
+}
+
+
+//draw the bee with its wings
+function drawBee() {
+
+    push();
+    noStroke();
+
+     fill("#d2d5c8ff");
+    ellipse(bee.x + 20, bee.y, bee.size + 10);
+      ellipse(bee.x - 20, bee.y, bee.size + 10);
+
+        fill("#ffd343ff");
+    ellipse(bee.x, bee.y, bee.size);
+
+    pop();
+
 }
 
 //Draws the log as a brown rectangle
@@ -204,6 +246,11 @@ function resetFly(fly) {
     fly.x = random(100, 600);
 }
 
+function resetBee() {
+    bee.x = 0;
+    bee.y = random(20, 120);
+}
+
 /**
  * Moves the frog smoothly on the x axis by pressing on the left/right arrow, also stops it when it reaches the sides of the canva
  */
@@ -223,18 +270,20 @@ function moveFrog() {
 
 }
 
+
 /**
  * Handles moving the tongue based on its state
  */
 function moveTongue() {
     // Tongue matches the frog's x
 
-    frog.tongue.x = frog.body.x;
+    frog.tongue.x = mouseX;
 
 
     // If the tongue is idle, it doesn't do anything
     if (frog.tongue.state === "idle") {
         // Do nothing
+        frog.tongue.x = frog.body.x
     }
     // If the tongue is outbound, it moves up
     else if (frog.tongue.state === "outbound") {
@@ -307,6 +356,19 @@ function checkTongueFlyOverlap(fly) {
     if (eaten) {
         // Reset the fly
         resetFly(fly);
+        // Bring back the tongue
+        frog.tongue.state = "inbound";
+    }
+}
+
+function checkTongueBeeOverlap() {
+    // Get distance from tongue to bee
+    const d = dist(frog.tongue.x, frog.tongue.y, bee.x, bee.y);
+    // Check if it's an overlap
+    const eaten = (d < frog.tongue.size / 2 + bee.size / 2);
+    if (eaten) {
+        // Reset the bee
+        resetBee();
         // Bring back the tongue
         frog.tongue.state = "inbound";
     }
