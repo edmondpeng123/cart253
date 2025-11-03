@@ -68,6 +68,7 @@ function setup() {
 function draw() {
     background("#87ceeb");
     moveFly();
+    moveLog();
     drawFly();
     drawLog();
     moveFrog();
@@ -78,7 +79,7 @@ function draw() {
 
 /**
  * Moves the fly according to its speed
- * Resets the fly if it gets all the way to the right
+ * Resets the fly if it gets all the way to the bottom
  */
 function moveFly() {
     // Move the fly
@@ -92,6 +93,24 @@ function moveFly() {
         resetFly();
     }
 }
+
+//moves the log according to its speed
+//resets it if it goes beyond the bottom
+
+function moveLog() {
+    // Move the log vertically downwards
+    log.y += log.speed;
+    // Handle the log going off the canvas
+    if (log.x > width) {
+        resetLog();
+    }
+
+    if (log.y > width) {
+        resetLog();
+    }
+}
+
+
 
 
 
