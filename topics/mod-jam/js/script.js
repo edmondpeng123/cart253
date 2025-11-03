@@ -41,15 +41,17 @@ const firstFly = {
     x: 20,
     y: 200, // Will be random
     size: 20,
-    speed: 3
+    speed: 3,
+    buzziness: 2
 };
 
 //second fly that will go in different speed, also different size
 const secondFly = {
     x: 20,
     y: 200, // Will be random
-    size: 40,
-    speed: 6
+    size: 30,
+    speed: 2.5,
+    buzziness: 3
 };
 
 //third fly that will go in different speed, also different size
@@ -57,7 +59,8 @@ const thirdFly = {
     x: 20,
     y: 200, // Will be random
     size: 15,
-    speed: 5
+    speed: 5,
+    buzziness: 4
 };
 
 
@@ -85,7 +88,7 @@ function setup() {
 }
 
 function draw() {
-    background("#87ceeb");
+    background("#90cec3ff");
     moveFly(firstFly);
     moveFly(secondFly);
     moveFly(thirdFly);
@@ -93,6 +96,9 @@ function draw() {
     drawFly(firstFly);
     drawFly(secondFly);
     drawFly(thirdFly);
+    buzzFly(firstFly);
+    buzzFly(secondFly);
+    buzzFly(thirdFly);
     drawLog();
     moveFrog();
     moveTongue();
@@ -119,6 +125,12 @@ function moveFly(fly) {
     }
 }
 
+
+//gave the flies a little buzz to destabilize the frog
+function buzzFly(fly) {
+     fly.x += random(-fly.buzziness, fly.buzziness);
+    fly.y += random(-fly.buzziness, fly.buzziness);
+}
 //moves the log according to its speed
 //resets it if it goes beyond the bottom
 
@@ -148,7 +160,7 @@ function moveLog() {
 function drawFly(fly) {
     push();
     noStroke();
-    fill("#000000");
+    fill("#000000ff");
     ellipse(fly.x, fly.y, fly.size);
     pop();
 }
@@ -232,23 +244,39 @@ function moveTongue() {
 function drawFrog() {
     // Draw the tongue tip
     push();
-    fill("#ff0000");
+    fill("#ac4d4dff");
     noStroke();
     ellipse(frog.tongue.x, frog.tongue.y, frog.tongue.size);
     pop();
 
     // Draw the rest of the tongue
     push();
-    stroke("#ff0000");
+    stroke("#ba4848ff");
     strokeWeight(frog.tongue.size);
     line(frog.tongue.x, frog.tongue.y, frog.body.x, frog.body.y);
     pop();
 
-    // Draw the frog's body
+    // Draw the frog's body 
+    //draw the frog's eyeballs
     push();
-    fill("#00ff00");
+    fill("#003e1cff");
     noStroke();
     ellipse(frog.body.x, frog.body.y, frog.body.size);
+    ellipse(frog.body.x + 45, frog.body.y - 20, frog.body.size - 30)
+    ellipse(frog.body.x - 45, frog.body.y - 20, frog.body.size - 30)
+
+     fill("#dce3b1ff");
+     ellipse(frog.body.x + 52, frog.body.y - 40, frog.body.size - 60)
+      ellipse(frog.body.x - 52, frog.body.y - 40, frog.body.size - 60)
+
+
+          fill("#000000ff");
+        ellipse(frog.body.x + 52, frog.body.y - 50, frog.body.size - 80)
+      ellipse(frog.body.x - 52, frog.body.y - 50, frog.body.size - 80)
+
+       fill("#ffffffff");
+            ellipse(frog.body.x + 44, frog.body.y - 50, frog.body.size - 110)
+      ellipse(frog.body.x - 60, frog.body.y - 50, frog.body.size - 110)
     pop();
 }
 
