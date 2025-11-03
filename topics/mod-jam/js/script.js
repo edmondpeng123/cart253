@@ -21,7 +21,8 @@ const frog = {
     body: {
         x: 320,
         y: 520,
-        size: 150
+        size: 150,
+        width: 10
     },
     // The frog's tongue has a position, size, speed, and state
     tongue: {
@@ -96,10 +97,21 @@ function resetFly() {
 }
 
 /**
- * Moves the frog to the mouse position on x
+ * Moves the frog smoothly on the x axis by pressing on the left/right arrow, also stops it when it reaches the sides of the canva
  */
 function moveFrog() {
-    frog.body.x = mouseX;
+    if (keyCode === LEFT_ARROW) {
+        frog.body.x -= 5;
+    } else if (keyCode === RIGHT_ARROW) {
+        frog.body.x += 5;
+    }
+
+    if (frog.body.x > (width - frog.body.size / 2.5)) {
+        frog.body.x -= 5;
+    } else if (frog.body.x < (0 + frog.body.size / 2.5)) {
+        frog.body.x += 5;
+    }
+
 }
 
 /**
