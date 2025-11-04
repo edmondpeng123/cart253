@@ -30,7 +30,6 @@ const frog = {
         x: 320,
         y: 700,
         size: 120,
-        width: 10,
     },
     // The frog's tongue has a position, size, speed, and state
     tongue: {
@@ -153,7 +152,7 @@ function startScreen() {
     textSize(20);
     textStyle(BOLD);
     textAlign(CENTER, CENTER);
-    text("Eat the flies, avoid the logs and enjoy the feast!", width / 2, height / 1.75);
+    text("Eat the flies, avoid the logs and enjoy the feast for as long as you can!", width / 2, height / 1.75);
 
 
 
@@ -199,8 +198,8 @@ function mainGame() {
     checkTongueFlyOverlap(secondFly);
     checkTongueFlyOverlap(thirdFly);
     checkTongueBeeOverlap();
-    logKills(firstLog);
-    logKills(secondLog);
+    // logKills(firstLog);
+    // logKills(secondLog);
     displayUI();
 
 }
@@ -448,7 +447,8 @@ function checkTongueFlyOverlap(fly) {
         frog.body.size += 1;
 
         //make the logs go faster little by little as you eat more flies
-        log.speed += 0.1;
+        firstLog.speed += 0.1;
+        secondLog.speed += 0.3;
 
     }
 }
@@ -466,31 +466,63 @@ function checkTongueBeeOverlap() {
         score += 5;
 
         //make the tongue grow even bigger when frog eats magical gold bee
-        frog.tongue.size += 3;
+        frog.tongue.size += 5;
+
+        //make the logs go faster little by little as you eat more bees
+        firstLog.speed += 0.2;
+        secondLog.speed += 0.2;
 
     }
 }
 
-// function gameFast() {
 
-//     if(score) === 20 {
 
-//     }
+// function ellipseRectCollide(ex, ey, ew, eh, rx, ry, rw, rh) {
+//   const closestX = constrain(ex, rx - rw / 2, rx + rw / 2);
+//   const closestY = constrain(ey, ry - rh / 2, ry + rh / 2);
+//   const dx = ex - closestX;
+//   const dy = ey - closestY;
+//   const distance = sqrt(dx * dx + dy * dy);
+//   return distance < ew / 2;
 // }
 
+//   if (ellipseRectCollide(
+//     frog.body.x, frog.body.y, frog.body.size, frog.body.size,
+//     firstLog.x, firstLog.y, firstLog.w, firstLog.h
+//   )) {
+//     lose();
+//   }
 
-function logKills(log) {
 
-    //get distance from log to frog
-    const e = dist(frog.body.x, frog.body.y, log.x, log.y);
 
-    const touch = (e < frog.body.size / 2 + log.size / 2);
 
-    if (touch) {
-        lose();
-    }
 
-}
+// function logKills(log) {
+    
+//     rectMode(CENTER);
+
+    //get distance from log to frog using a rect-based collision
+    // const frogLeft = frog.body.x - frog.body.w / 2;
+    // const frogRight = frog.body.x + frog.body.w / 2;
+    // const frogTop = frog.body.y - frog.body.h / 2;
+    // const frogBottom = frog.body.y + frog.body.h / 2;
+
+    // const logLeft = log.x - log.w / 2;
+    // const logRight = log.x + log.w / 2;
+    // const logTop = log.y - log.h / 2;
+    // const logBottom = log.y + log.h / 2;
+
+    // const touch =
+    //     frogRight > logLeft &&
+    //     frogLeft < logRight &&
+    //     frogBottom > logTop &&
+    //     frogTop < logBottom;
+
+    // if (touch) {
+    //     lose();
+
+    // }
+// }
 
 /**
  * Launch the tongue on click (if it's not launched yet)
@@ -509,6 +541,7 @@ function lose() {
 
 function displayUI() {
     if (gameOver) {
+        endScreen();
         push();
         textSize(48);
         textStyle(BOLD);
