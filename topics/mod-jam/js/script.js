@@ -15,9 +15,13 @@
 
 "use strict";
 
+//setting up the starting screen
+var whichscreen = "start"
+
 //setting up the gameover screen to false, so that we can make it true and trigger it
 let gameOver = false;
 let score = 0;
+
 
 // Our frog
 const frog = {
@@ -103,8 +107,63 @@ resetBee();
 }
 
 function draw() {
+
+    if (whichscreen === "start") {
+    startScreen()
+
+  } else if (whichscreen === "maingame") {
+    mainGame()
+
+  } else {
+    endScreen()
+  }
+
+}
+
+function startScreen() {
     background("#90cec3ff");
+
+textSize(80);
+     textStyle(BOLD);
+    textAlign(CENTER, CENTER);
+    fill("#ac4d4dff");
+    text("The Frog Feast", width/2, height/3.5);
+
+
+
+    textSize(40);
+     textStyle(BOLD);
+    textAlign(CENTER, CENTER);
+    text("Click To Start!", width/2, height/2);
+
+     textSize(20);
+     textStyle(BOLD);
+    textAlign(CENTER, CENTER);
+    text("Eat the flies, avoid the logs and enjoy the feast!", width/2, height/1.75);
+
+
+
+
+ drawFly(firstFly);
     moveFly(firstFly);
+     buzzFly(firstFly);
+     checkTongueFlyOverlap(firstFly);
+    moveFrog();
+    moveTongue();
+    drawFrog();
+    
+
+    if (mouseIsPressed) {
+        whichscreen = "maingame"
+}
+
+
+}
+
+function mainGame() {
+
+     background("#90cec3ff");
+     moveFly(firstFly);
     moveFly(secondFly);
     moveFly(thirdFly);
     moveLog();
@@ -370,6 +429,8 @@ function checkTongueFlyOverlap(fly) {
         score += 1;
         //make the frog grow a little bigger as it eats the flies
         frog.body.size += 1;
+
+        //make the logs go faster little by little as you eat more flies
           log.speed += 0.1;
 
     }
