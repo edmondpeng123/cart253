@@ -15,6 +15,10 @@
 
 "use strict";
 
+//setting up the gameover screen to false, so that we can make it true and trigger it
+let gameOver = false;
+let score = 0;
+
 // Our frog
 const frog = {
     // The frog's body has a position and size
@@ -22,7 +26,7 @@ const frog = {
         x: 320,
         y: 700,
         size: 120,
-        width: 10
+        width: 10,
     },
     // The frog's tongue has a position, size, speed, and state
     tongue: {
@@ -89,13 +93,16 @@ const log = {
 function setup() {
     createCanvas(900, 700);
 
-
     // Give the fly its first random position
     resetFly(firstFly);
      resetFly(secondFly);
       resetFly(thirdFly);
 resetBee();
     resetLog();
+    lose();
+    displayUI();
+    displayScore();
+
 }
 
 function draw() {
@@ -358,6 +365,9 @@ function checkTongueFlyOverlap(fly) {
         resetFly(fly);
         // Bring back the tongue
         frog.tongue.state = "inbound";
+        score += 1;
+        //make the frog grow a little bigger as it eats the flies
+        frog.body.size += 1;
     }
 }
 
@@ -371,6 +381,10 @@ function checkTongueBeeOverlap() {
         resetBee();
         // Bring back the tongue
         frog.tongue.state = "inbound";
+          score += 5;
+
+          //make the tongue grow even bigger when frog eats magical gold bee
+          frog.tongue.size += 3;
     }
 }
 
@@ -383,3 +397,30 @@ function mousePressed() {
     }
 }
 
+
+
+
+function lose() {
+  gameOver = true;
+}
+
+function displayUI() {
+  if (gameOver) {
+    push();
+    textSize(48);
+    textStyle(BOLD);
+    textAlign(CENTER, CENTER);
+    text("You lose!", width/2, height/3);
+    pop();
+  }
+  displayScore();
+}
+
+function displayScore() {
+  push();
+  textSize(48);
+  textStyle(BOLD);
+  textAlign(CENTER, CENTER);
+  text(floor(score), width/2, height/2);
+  pop();
+}
