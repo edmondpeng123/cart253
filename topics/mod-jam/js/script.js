@@ -75,20 +75,29 @@ const thirdFly = {
 //special speedy rare bee will fly horizontally and give more points
 const bee = {
     x: 20,
-    y: 200, // Will be random
+    y: 0, // Will be random
     size: 20,
-    speed: 9,
+    speed: 9
 };
 
 
 //this is a log
 //has similar position and speed to the fly, but it's rectangular
-const log = {
+const firstLog = {
+    x: 20,
+    y: 0,
+    w: 60,
+    h: 150,
+    speed: 4
+}
+
+//second log for parameters, but it's slower and bigger
+const secondLog = {
     x: 20,
     y: 200,
     w: 60,
     h: 150,
-    speed: 4
+    speed: 2
 }
 
 /**
@@ -99,74 +108,80 @@ function setup() {
 
     // Give the fly its first random position
     resetFly(firstFly);
-     resetFly(secondFly);
-      resetFly(thirdFly);
-resetBee();
-    resetLog();
+    resetFly(secondFly);
+    resetFly(thirdFly);
+    resetBee();
+    resetLog(firstLog);
+    resetLog(secondLog);
 
 }
+
 
 function draw() {
 
+    //setting up the start screen into the main game screen and the end screen
     if (whichscreen === "start") {
-    startScreen()
+        startScreen()
 
-  } else if (whichscreen === "maingame") {
-    mainGame()
+    } else if (whichscreen === "maingame") {
+        mainGame()
 
-  } else {
-    endScreen()
-  }
+    } else {
+        endScreen()
+    }
 
 }
 
+
 function startScreen() {
+    //giving a little preview of the game in the introduction screen with the main title and instruction
     background("#90cec3ff");
 
-textSize(80);
-     textStyle(BOLD);
+    textSize(80);
+    textStyle(BOLD);
     textAlign(CENTER, CENTER);
     fill("#ac4d4dff");
-    text("The Frog Feast", width/2, height/3.5);
+    text("The Frog Feast", width / 2, height / 3.5);
 
 
 
     textSize(40);
-     textStyle(BOLD);
+    textStyle(BOLD);
     textAlign(CENTER, CENTER);
-    text("Click To Start!", width/2, height/2);
+    text("Click To Start!", width / 2, height / 2);
 
-     textSize(20);
-     textStyle(BOLD);
+    textSize(20);
+    textStyle(BOLD);
     textAlign(CENTER, CENTER);
-    text("Eat the flies, avoid the logs and enjoy the feast!", width/2, height/1.75);
+    text("Eat the flies, avoid the logs and enjoy the feast!", width / 2, height / 1.75);
 
 
 
-
- drawFly(firstFly);
+    //little preview of the main mechanic of the game
+    drawFly(firstFly);
     moveFly(firstFly);
-     buzzFly(firstFly);
-     checkTongueFlyOverlap(firstFly);
+    buzzFly(firstFly);
+    checkTongueFlyOverlap(firstFly);
     moveFrog();
     moveTongue();
     drawFrog();
-    
 
+    //click to start game immediately
     if (mouseIsPressed) {
         whichscreen = "maingame"
-}
+    }
 
 
 }
 
 function mainGame() {
 
-     background("#90cec3ff");
-     moveFly(firstFly);
+    background("#90cec3ff");
+    moveFly(firstFly);
     moveFly(secondFly);
     moveFly(thirdFly);
-    moveLog();
+    moveLog(firstLog);
+    moveLog(secondLog);
     moveBee();
     drawBee();
     drawFly(firstFly);
@@ -175,7 +190,8 @@ function mainGame() {
     buzzFly(firstFly);
     buzzFly(secondFly);
     buzzFly(thirdFly);
-    drawLog();
+    drawLog(firstLog);
+    drawLog(secondLog);
     moveFrog();
     moveTongue();
     drawFrog();
@@ -183,7 +199,8 @@ function mainGame() {
     checkTongueFlyOverlap(secondFly);
     checkTongueFlyOverlap(thirdFly);
     checkTongueBeeOverlap();
-    logKills();
+    logKills(firstLog);
+    logKills(secondLog);
     displayUI();
 
 }
@@ -209,7 +226,7 @@ function moveBee() {
     // Move the fly
     bee.x += bee.speed;
 
-       if (bee.x > width) {
+    if (bee.x > width) {
         resetBee();
     }
 
@@ -221,23 +238,23 @@ function moveBee() {
 
 //gave the flies a little buzz to destabilize the frog
 function buzzFly(fly) {
-     fly.x += random(-fly.buzziness, fly.buzziness);
+    fly.x += random(-fly.buzziness, fly.buzziness);
     fly.y += random(-fly.buzziness, fly.buzziness);
 }
 
 //moves the log according to its speed
 //resets it if it goes beyond the bottom
 
-function moveLog() {
+function moveLog(log) {
     // Move the log vertically downwards
     log.y += log.speed;
     // Handle the log going off the canvas
     if (log.x > width) {
-        resetLog();
+        resetLog(log);
     }
 
     if (log.y > width) {
-        resetLog();
+        resetLog(log);
     }
 }
 
@@ -252,13 +269,13 @@ function moveLog() {
 function drawFly(fly) {
     push();
     noStroke();
-  
 
-     fill("#d2d5c8ff");
+
+    fill("#d2d5c8ff");
     ellipse(fly.x + 20, fly.y, fly.size + 10);
-      ellipse(fly.x - 20, fly.y, fly.size + 10);
+    ellipse(fly.x - 20, fly.y, fly.size + 10);
 
-        fill("#000000ff");
+    fill("#000000ff");
     ellipse(fly.x, fly.y, fly.size);
 
 
@@ -272,11 +289,11 @@ function drawBee() {
     push();
     noStroke();
 
-     fill("#d2d5c8ff");
+    fill("#d2d5c8ff");
     ellipse(bee.x + 20, bee.y, bee.size + 10);
-      ellipse(bee.x - 20, bee.y, bee.size + 10);
+    ellipse(bee.x - 20, bee.y, bee.size + 10);
 
-        fill("#ffd343ff");
+    fill("#ffd343ff");
     ellipse(bee.x, bee.y, bee.size);
 
     pop();
@@ -284,23 +301,23 @@ function drawBee() {
 }
 
 //Draws the log as a brown rectangle
-function drawLog() {
+function drawLog(log) {
     push();
     noStroke();
     fill("#473535ff");
     rect(log.x, log.y, log.w, log.h);
 
     fill("#9f9f71ff");
-ellipse(log.x + 30, log.y, 61)
+    ellipse(log.x + 30, log.y, 61)
 
-   fill("#473535ff");
-ellipse(log.x + 30, log.y + 140, 61)
+    fill("#473535ff");
+    ellipse(log.x + 30, log.y + 140, 61)
 
     pop();
 }
 
 //resets the log to the top with a random x, the y is negative because log is long so it needs to smooth in the frame...
-function resetLog() {
+function resetLog(log) {
     log.y = -80;
     log.x = random(50, 700);
 }
@@ -398,18 +415,18 @@ function drawFrog() {
     ellipse(frog.body.x + 45, frog.body.y - 20, frog.body.size - 30)
     ellipse(frog.body.x - 45, frog.body.y - 20, frog.body.size - 30)
 
-     fill("#dce3b1ff");
-     ellipse(frog.body.x + 52, frog.body.y - 40, frog.body.size - 60)
-      ellipse(frog.body.x - 52, frog.body.y - 40, frog.body.size - 60)
+    fill("#dce3b1ff");
+    ellipse(frog.body.x + 52, frog.body.y - 40, frog.body.size - 60)
+    ellipse(frog.body.x - 52, frog.body.y - 40, frog.body.size - 60)
 
 
-          fill("#000000ff");
-        ellipse(frog.body.x + 52, frog.body.y - 50, frog.body.size - 80)
-      ellipse(frog.body.x - 52, frog.body.y - 50, frog.body.size - 80)
+    fill("#000000ff");
+    ellipse(frog.body.x + 52, frog.body.y - 50, frog.body.size - 80)
+    ellipse(frog.body.x - 52, frog.body.y - 50, frog.body.size - 80)
 
-       fill("#ffffffff");
-            ellipse(frog.body.x + 44, frog.body.y - 50, frog.body.size - 110)
-      ellipse(frog.body.x - 60, frog.body.y - 50, frog.body.size - 110)
+    fill("#ffffffff");
+    ellipse(frog.body.x + 44, frog.body.y - 50, frog.body.size - 110)
+    ellipse(frog.body.x - 60, frog.body.y - 50, frog.body.size - 110)
     pop();
 }
 
@@ -431,7 +448,7 @@ function checkTongueFlyOverlap(fly) {
         frog.body.size += 1;
 
         //make the logs go faster little by little as you eat more flies
-          log.speed += 0.1;
+        log.speed += 0.1;
 
     }
 }
@@ -446,11 +463,11 @@ function checkTongueBeeOverlap() {
         resetBee();
         // Bring back the tongue
         frog.tongue.state = "inbound";
-          score += 5;
+        score += 5;
 
-          //make the tongue grow even bigger when frog eats magical gold bee
-          frog.tongue.size += 3;
-        
+        //make the tongue grow even bigger when frog eats magical gold bee
+        frog.tongue.size += 3;
+
     }
 }
 
@@ -462,7 +479,7 @@ function checkTongueBeeOverlap() {
 // }
 
 
-function logKills() {
+function logKills(log) {
 
     //get distance from log to frog
     const e = dist(frog.body.x, frog.body.y, log.x, log.y);
@@ -487,28 +504,28 @@ function mousePressed() {
 
 
 function lose() {
-  gameOver = true;
+    gameOver = true;
 }
 
 function displayUI() {
-  if (gameOver) {
-    push();
-    textSize(48);
-    textStyle(BOLD);
-    textAlign(CENTER, CENTER);
-    text("Froggy went to frog heaven...", width/2, height/3);
-    pop();
-  }
-  displayScore();
+    if (gameOver) {
+        push();
+        textSize(48);
+        textStyle(BOLD);
+        textAlign(CENTER, CENTER);
+        text("Froggy went to frog heaven...", width / 2, height / 3);
+        pop();
+    }
+    displayScore();
 }
 
 function displayScore() {
-  push();
-  textSize(32);
-  textStyle(BOLD);
-  textAlign(CENTER, CENTER);
+    push();
+    textSize(32);
+    textStyle(BOLD);
+    textAlign(CENTER, CENTER);
 
-    
-  text(floor(score), width/1.1 , height/12);
-  pop();
+
+    text(floor(score), width / 1.1, height / 12);
+    pop();
 }
