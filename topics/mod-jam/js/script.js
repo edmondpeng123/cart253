@@ -27,7 +27,6 @@ const frog = {
         y: 700,
         size: 120,
         width: 10,
-        buzziness: 0.1,
     },
     // The frog's tongue has a position, size, speed, and state
     tongue: {
@@ -117,7 +116,6 @@ function draw() {
     buzzFly(firstFly);
     buzzFly(secondFly);
     buzzFly(thirdFly);
-    buzzfrog();
     drawLog();
     moveFrog();
     moveTongue();
@@ -168,11 +166,6 @@ function buzzFly(fly) {
     fly.y += random(-fly.buzziness, fly.buzziness);
 }
 
-//add slight frog buzzzz that will get buzzier as it eats more
-function buzzfrog() {
-    frog.body.x += random(-frog.body.buzziness, frog.body.buzziness);
-     frog.body.y += random(-frog.body.buzziness, frog.body.buzziness);
-}
 //moves the log according to its speed
 //resets it if it goes beyond the bottom
 
@@ -298,7 +291,8 @@ function moveTongue() {
     // If the tongue is idle, it doesn't do anything
     if (frog.tongue.state === "idle") {
         // Do nothing
-        frog.tongue.x = frog.body.x
+        frog.tongue.x = frog.body.x;
+        frog.tongue.y = frog.body.y
     }
     // If the tongue is outbound, it moves up
     else if (frog.tongue.state === "outbound") {
@@ -376,6 +370,8 @@ function checkTongueFlyOverlap(fly) {
         score += 1;
         //make the frog grow a little bigger as it eats the flies
         frog.body.size += 1;
+          log.speed += 0.1;
+
     }
 }
 
@@ -393,6 +389,7 @@ function checkTongueBeeOverlap() {
 
           //make the tongue grow even bigger when frog eats magical gold bee
           frog.tongue.size += 3;
+        
     }
 }
 
