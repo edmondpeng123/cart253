@@ -27,6 +27,7 @@ const frog = {
         y: 700,
         size: 120,
         width: 10,
+        buzziness: 0.1,
     },
     // The frog's tongue has a position, size, speed, and state
     tongue: {
@@ -99,9 +100,6 @@ function setup() {
       resetFly(thirdFly);
 resetBee();
     resetLog();
-    lose();
-    displayUI();
-    displayScore();
 
 }
 
@@ -119,6 +117,7 @@ function draw() {
     buzzFly(firstFly);
     buzzFly(secondFly);
     buzzFly(thirdFly);
+    buzzfrog();
     drawLog();
     moveFrog();
     moveTongue();
@@ -127,6 +126,9 @@ function draw() {
     checkTongueFlyOverlap(secondFly);
     checkTongueFlyOverlap(thirdFly);
     checkTongueBeeOverlap();
+    logKills();
+    displayUI();
+
 }
 
 /**
@@ -164,6 +166,12 @@ function moveBee() {
 function buzzFly(fly) {
      fly.x += random(-fly.buzziness, fly.buzziness);
     fly.y += random(-fly.buzziness, fly.buzziness);
+}
+
+//add slight frog buzzzz that will get buzzier as it eats more
+function buzzfrog() {
+    frog.body.x += random(-frog.body.buzziness, frog.body.buzziness);
+     frog.body.y += random(-frog.body.buzziness, frog.body.buzziness);
 }
 //moves the log according to its speed
 //resets it if it goes beyond the bottom
@@ -388,6 +396,27 @@ function checkTongueBeeOverlap() {
     }
 }
 
+// function gameFast() {
+
+//     if(score) === 20 {
+
+//     }
+// }
+
+
+function logKills() {
+
+    //get distance from log to frog
+    const e = dist(frog.body.x, frog.body.y, log.x, log.y);
+
+    const touch = (e < frog.body.size / 2 + log.size / 2);
+
+    if (touch) {
+        lose();
+    }
+
+}
+
 /**
  * Launch the tongue on click (if it's not launched yet)
  */
@@ -396,7 +425,6 @@ function mousePressed() {
         frog.tongue.state = "outbound";
     }
 }
-
 
 
 
@@ -410,7 +438,7 @@ function displayUI() {
     textSize(48);
     textStyle(BOLD);
     textAlign(CENTER, CENTER);
-    text("You lose!", width/2, height/3);
+    text("Froggy went to frog heaven...", width/2, height/3);
     pop();
   }
   displayScore();
@@ -418,9 +446,11 @@ function displayUI() {
 
 function displayScore() {
   push();
-  textSize(48);
+  textSize(32);
   textStyle(BOLD);
   textAlign(CENTER, CENTER);
-  text(floor(score), width/2, height/2);
+
+    
+  text(floor(score), width/1.1 , height/12);
   pop();
 }
