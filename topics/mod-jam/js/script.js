@@ -210,16 +210,6 @@ function endScreen() {
     displayScore();
 
 
-
-    textSize(40);
-    textStyle(BOLD);
-    textAlign(CENTER, CENTER);
-    text("Click to Restart", width / 2, height / 1.75);
-
-    if (mouseIsPressed) {
-        whichscreen = "start"
-    }
-
 }
 
 function mainGame() {
