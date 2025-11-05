@@ -1,13 +1,13 @@
 /**
- * Frogfrogfrog
- * Pippin Barr
+ * The Froggy Feast
+ * Edmond Peng
  * 
- * A game of catching flies with your frog-tongue
+ * A game of eating the most flies and gaining happiness
  * 
  * Instructions:
- * - Move the frog with your mouse
- * - Click to launch the tongue
- * - Catch flies
+ * - Move the frog with your left and right arrow
+ * - Click mouse to launch the tongue
+ * - Catch flies and avoid logs
  * 
  * Made with p5
  * https://p5js.org/
@@ -76,7 +76,6 @@ const thirdFly = {
     buzziness: 4
 };
 
-
 //special speedy rare bee will fly horizontally and give more points
 const bee = {
     x: 20,
@@ -105,7 +104,7 @@ const secondLog = {
     speed: 2
 }
 
-
+//load assets ; sounds and font
 function preload() {
     yum = loadSound('./assets/sounds/yoshi-tongue.mp3')
     ded = loadSound('./assets/sounds/oof-button.mp3')
@@ -153,7 +152,7 @@ function startScreen() {
     background("#90cec3ff");
 
     textFont(font);
-    textSize(80);
+    textSize(90);
     textStyle(BOLD);
     textAlign(CENTER, CENTER);
     fill("#ac4d4dff");
@@ -170,6 +169,11 @@ function startScreen() {
     textStyle(BOLD);
     textAlign(CENTER, CENTER);
     text("Eat the flies, avoid the logs and enjoy the feast for as long as you can!", width / 2, height / 1.75);
+
+     textSize(16);
+    textStyle(BOLD);
+    textAlign(CENTER, CENTER);
+    text("Click arrow left or right to move the froggy  ||  Mouse click on the flies to eat", width / 2, height / 1.65);
 
 
 
@@ -197,8 +201,10 @@ function endScreen() {
     textStyle(BOLD);
     textAlign(CENTER, CENTER);
     text("Froggy went to frog heaven...", width / 2, height / 3);
+    //stop sounds
     yum.pause();
     ded.pause();
+    //display happiness score
     displayScore();
 
 }
@@ -236,8 +242,6 @@ function mainGame() {
 
 }
 
-
-
 /**
  * Moves the fly according to its speed
  * Resets the fly if it gets all the way to the bottom
@@ -268,7 +272,6 @@ function moveBee() {
     }
 }
 
-
 //gave the flies a little buzz to destabilize the frog
 function buzzFly(fly) {
     fly.x += random(-fly.buzziness, fly.buzziness);
@@ -292,9 +295,6 @@ function moveLog(log) {
 }
 
 
-
-
-
 /**
  * Draws the fly as a black circle
  * added little wings on them
@@ -304,10 +304,12 @@ function drawFly(fly) {
     noStroke();
 
 
+    //drawing its wings
     fill("#d2d5c8ff");
     ellipse(fly.x + 20, fly.y, fly.size + 10);
     ellipse(fly.x - 20, fly.y, fly.size + 10);
 
+    //drawing its body
     fill("#000000ff");
     ellipse(fly.x, fly.y, fly.size);
 
@@ -364,7 +366,7 @@ function resetFly(fly) {
     fly.y = 0;
     fly.x = random(100, 600);
 }
-
+//* Resets the fly to the top with a random y
 function resetBee() {
     bee.x = 0;
     bee.y = random(20, 120);
@@ -381,6 +383,7 @@ function moveFrog() {
         frog.body.x += 6;
     }
 
+    //make it stop at a certain width of the screen
     if (frog.body.x > (width - frog.body.size / 2)) {
         frog.body.x -= 6;
     } else if (frog.body.x < (0 + frog.body.size / 2)) {
@@ -388,7 +391,6 @@ function moveFrog() {
     }
 
 }
-
 
 /**
  * Handles moving the tongue based on its state
@@ -480,7 +482,7 @@ function checkTongueFlyOverlap(fly) {
         frog.tongue.state = "inbound";
         score += 1;
         //make the frog grow a little bigger as it eats the flies
-        frog.body.size += 1;
+        frog.body.size += 2;
 
         //make the logs go faster little by little as you eat more flies
         firstLog.speed += 0.1;
@@ -503,7 +505,7 @@ function checkTongueBeeOverlap() {
         score += 5;
 
         //make the tongue grow even bigger when frog eats magical gold bee
-        frog.tongue.size += 5;
+        frog.tongue.size += 6;
 
         //make the logs go faster little by little as you eat more bees
         firstLog.speed += 0.2;
@@ -513,23 +515,6 @@ function checkTongueBeeOverlap() {
     }
 }
 
-
-
-// function ellipseRectCollide(ex, ey, ew, eh, rx, ry, rw, rh) {
-//   const closestX = constrain(ex, rx - rw / 2, rx + rw / 2);
-//   const closestY = constrain(ey, ry - rh / 2, ry + rh / 2);
-//   const dx = ex - closestX;
-//   const dy = ey - closestY;
-//   const distance = sqrt(dx * dx + dy * dy);
-//   return distance < ew / 2;
-// }
-
-//   if (ellipseRectCollide(
-//     frog.body.x, frog.body.y, frog.body.size, frog.body.size,
-//     firstLog.x, firstLog.y, firstLog.w, firstLog.h
-//   )) {
-//     lose();
-//   }
 
 function logKills(log) {
     if (
@@ -543,35 +528,6 @@ function logKills(log) {
 
     }
 }
-
-
-
-// function logKills(log) {
-
-//     rectMode(CENTER);
-
-//get distance from log to frog using a rect-based collision
-// const frogLeft = frog.body.x - frog.body.w / 2;
-// const frogRight = frog.body.x + frog.body.w / 2;
-// const frogTop = frog.body.y - frog.body.h / 2;
-// const frogBottom = frog.body.y + frog.body.h / 2;
-
-// const logLeft = log.x - log.w / 2;
-// const logRight = log.x + log.w / 2;
-// const logTop = log.y - log.h / 2;
-// const logBottom = log.y + log.h / 2;
-
-// const touch =
-//     frogRight > logLeft &&
-//     frogLeft < logRight &&
-//     frogBottom > logTop &&
-//     frogTop < logBottom;
-
-// if (touch) {
-//     lose();
-
-// }
-// }
 
 /**
  * Launch the tongue on click (if it's not launched yet)
@@ -591,16 +547,10 @@ function lose() {
 function displayUI() {
     if (gameOver) {
         endScreen();
-
-        // push();
-        // textSize(48);
-        // textStyle(BOLD);
-        // textAlign(CENTER, CENTER);
-        // text("Froggy went to frog heaven...", width / 2, height / 3);
-        // pop();
     }
 }
 
+//end screen display score
 function displayScore() {
 
 
