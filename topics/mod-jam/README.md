@@ -2,6 +2,8 @@
 Student Name: Edmond Peng
 id: 40250224
 
+Link: 
+
 The Froggy Feast
 
 A game about a hungry froggy that is swimming and trying to eat flies while avoiding dangerous logs. The objective is to survive as long as possible and eat as many flies as possible to satiate its hunger and make him happy, but be careful, the more flies it eats, the bigger it grows which makes it more susceptible to being hit by a dangerous log. There's also a special bee that it can eat and it instead grows its tongue. As it eats more flies, logs are also falling faster...
