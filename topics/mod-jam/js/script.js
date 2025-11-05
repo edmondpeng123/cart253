@@ -22,6 +22,9 @@ var whichscreen = "start"
 let gameOver = false;
 let score = 0;
 
+//calling the sound effects
+let yum;
+let ded;
 
 // Our frog
 const frog = {
@@ -99,6 +102,13 @@ const secondLog = {
     speed: 2
 }
 
+
+function preload() {
+    yum = loadSound('./assets/sounds/yoshi-tongue.mp3')
+    ded = loadSound('./assets/sounds/oof-button.mp3')
+}
+
+
 /**
  * Creates the canvas and initializes the fly
  */
@@ -130,6 +140,8 @@ function draw() {
     }
 
 }
+
+
 
 
 function startScreen() {
@@ -173,6 +185,18 @@ function startScreen() {
 
 }
 
+function endScreen() {
+
+       background("#90cec3ff");
+ textSize(48);
+        textStyle(BOLD);
+        textAlign(CENTER, CENTER);
+        text("Froggy went to frog heaven...", width / 2, height / 3);
+
+        displayScore();
+
+}
+
 function mainGame() {
 
     background("#90cec3ff");
@@ -198,11 +222,15 @@ function mainGame() {
     checkTongueFlyOverlap(secondFly);
     checkTongueFlyOverlap(thirdFly);
     checkTongueBeeOverlap();
+    logKills(firstLog);
+    logKills(secondLog);
     // logKills(firstLog);
     // logKills(secondLog);
     displayUI();
 
 }
+
+
 
 /**
  * Moves the fly according to its speed
@@ -302,15 +330,17 @@ function drawBee() {
 //Draws the log as a brown rectangle
 function drawLog(log) {
     push();
+
+    rectMode(CENTER)
     noStroke();
     fill("#473535ff");
     rect(log.x, log.y, log.w, log.h);
 
     fill("#9f9f71ff");
-    ellipse(log.x + 30, log.y, 61)
+    ellipse(log.x, log.y + 80, 61)
 
     fill("#473535ff");
-    ellipse(log.x + 30, log.y + 140, 61)
+    ellipse(log.x, log.y - 70, 61)
 
     pop();
 }
@@ -449,6 +479,7 @@ function checkTongueFlyOverlap(fly) {
         //make the logs go faster little by little as you eat more flies
         firstLog.speed += 0.1;
         secondLog.speed += 0.3;
+        yum.play();
 
     }
 }
@@ -471,6 +502,7 @@ function checkTongueBeeOverlap() {
         //make the logs go faster little by little as you eat more bees
         firstLog.speed += 0.2;
         secondLog.speed += 0.2;
+         yum.play();
 
     }
 }
@@ -493,7 +525,17 @@ function checkTongueBeeOverlap() {
 //     lose();
 //   }
 
-
+function logKills(log) {
+    if (
+  frog.body.x < log.x + log.w &&
+  frog.body.x + frog.body.size > log.x &&
+  frog.body.y < log.y + log.h &&
+  frog.body.y + frog.body.size > log.y
+) {
+  lose();
+  ded.play();
+}
+}
 
 
 
@@ -542,23 +584,25 @@ function lose() {
 function displayUI() {
     if (gameOver) {
         endScreen();
-        push();
-        textSize(48);
-        textStyle(BOLD);
-        textAlign(CENTER, CENTER);
-        text("Froggy went to frog heaven...", width / 2, height / 3);
-        pop();
+        // push();
+        // textSize(48);
+        // textStyle(BOLD);
+        // textAlign(CENTER, CENTER);
+        // text("Froggy went to frog heaven...", width / 2, height / 3);
+        // pop();
     }
-    displayScore();
 }
 
 function displayScore() {
+
+
+ textSize(20);
+text("Level of Happiness Before Death:", width / 2, height / 2.25 );
+
     push();
     textSize(32);
     textStyle(BOLD);
     textAlign(CENTER, CENTER);
-
-
-    text(floor(score), width / 1.1, height / 12);
+    text(floor(score), width /2, height /2);
     pop();
 }
