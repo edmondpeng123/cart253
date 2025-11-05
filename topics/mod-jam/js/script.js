@@ -515,7 +515,8 @@ function checkTongueBeeOverlap() {
     }
 }
 
-
+//calculating the collision of the frog and the rect log
+//triggering end screen when it collides
 function logKills(log) {
     if (
         frog.body.x < log.x + log.w &&
@@ -539,7 +540,7 @@ function mousePressed() {
 }
 
 
-
+//displaying endscreen and score
 function lose() {
     gameOver = true;
 }
