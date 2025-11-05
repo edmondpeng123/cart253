@@ -26,6 +26,9 @@ let score = 0;
 let yum;
 let ded;
 
+//calling the font
+let font;
+
 // Our frog
 const frog = {
     // The frog's body has a position and size
@@ -106,6 +109,7 @@ const secondLog = {
 function preload() {
     yum = loadSound('./assets/sounds/yoshi-tongue.mp3')
     ded = loadSound('./assets/sounds/oof-button.mp3')
+    font = loadFont("./assets/type/sourgummy.ttf")
 }
 
 
@@ -148,6 +152,7 @@ function startScreen() {
     //giving a little preview of the game in the introduction screen with the main title and instruction
     background("#90cec3ff");
 
+    textFont(font);
     textSize(80);
     textStyle(BOLD);
     textAlign(CENTER, CENTER);
@@ -187,13 +192,14 @@ function startScreen() {
 
 function endScreen() {
 
-       background("#90cec3ff");
- textSize(48);
-        textStyle(BOLD);
-        textAlign(CENTER, CENTER);
-        text("Froggy went to frog heaven...", width / 2, height / 3);
-
-        displayScore();
+    background("#90cec3ff");
+    textSize(48);
+    textStyle(BOLD);
+    textAlign(CENTER, CENTER);
+    text("Froggy went to frog heaven...", width / 2, height / 3);
+    yum.pause();
+    ded.pause();
+    displayScore();
 
 }
 
@@ -502,7 +508,7 @@ function checkTongueBeeOverlap() {
         //make the logs go faster little by little as you eat more bees
         firstLog.speed += 0.2;
         secondLog.speed += 0.2;
-         yum.play();
+        yum.play();
 
     }
 }
@@ -527,43 +533,44 @@ function checkTongueBeeOverlap() {
 
 function logKills(log) {
     if (
-  frog.body.x < log.x + log.w &&
-  frog.body.x + frog.body.size > log.x &&
-  frog.body.y < log.y + log.h &&
-  frog.body.y + frog.body.size > log.y
-) {
-  lose();
-  ded.play();
-}
+        frog.body.x < log.x + log.w &&
+        frog.body.x + frog.body.size > log.x &&
+        frog.body.y < log.y + log.h &&
+        frog.body.y + frog.body.size > log.y
+    ) {
+        lose();
+        ded.play();
+
+    }
 }
 
 
 
 // function logKills(log) {
-    
+
 //     rectMode(CENTER);
 
-    //get distance from log to frog using a rect-based collision
-    // const frogLeft = frog.body.x - frog.body.w / 2;
-    // const frogRight = frog.body.x + frog.body.w / 2;
-    // const frogTop = frog.body.y - frog.body.h / 2;
-    // const frogBottom = frog.body.y + frog.body.h / 2;
+//get distance from log to frog using a rect-based collision
+// const frogLeft = frog.body.x - frog.body.w / 2;
+// const frogRight = frog.body.x + frog.body.w / 2;
+// const frogTop = frog.body.y - frog.body.h / 2;
+// const frogBottom = frog.body.y + frog.body.h / 2;
 
-    // const logLeft = log.x - log.w / 2;
-    // const logRight = log.x + log.w / 2;
-    // const logTop = log.y - log.h / 2;
-    // const logBottom = log.y + log.h / 2;
+// const logLeft = log.x - log.w / 2;
+// const logRight = log.x + log.w / 2;
+// const logTop = log.y - log.h / 2;
+// const logBottom = log.y + log.h / 2;
 
-    // const touch =
-    //     frogRight > logLeft &&
-    //     frogLeft < logRight &&
-    //     frogBottom > logTop &&
-    //     frogTop < logBottom;
+// const touch =
+//     frogRight > logLeft &&
+//     frogLeft < logRight &&
+//     frogBottom > logTop &&
+//     frogTop < logBottom;
 
-    // if (touch) {
-    //     lose();
+// if (touch) {
+//     lose();
 
-    // }
+// }
 // }
 
 /**
@@ -584,6 +591,7 @@ function lose() {
 function displayUI() {
     if (gameOver) {
         endScreen();
+
         // push();
         // textSize(48);
         // textStyle(BOLD);
@@ -596,13 +604,13 @@ function displayUI() {
 function displayScore() {
 
 
- textSize(20);
-text("Level of Happiness Before Death:", width / 2, height / 2.25 );
+    textSize(20);
+    text("Level of Happiness Before Death:", width / 2, height / 2.25);
 
     push();
     textSize(32);
     textStyle(BOLD);
     textAlign(CENTER, CENTER);
-    text(floor(score), width /2, height /2);
+    text(floor(score), width / 2, height / 2);
     pop();
 }
