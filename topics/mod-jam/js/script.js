@@ -138,7 +138,7 @@ function draw() {
     } else if (whichscreen === "maingame") {
         mainGame()
 
-    } else {
+    } else if (whichscreen == "endgame"){
         endScreen()
     }
 
@@ -196,14 +196,16 @@ function startScreen() {
 
 function endScreen() {
 
+    whichscreen = "endgame";
+
     background("#90cec3ff");
     textSize(48);
     textStyle(BOLD);
     textAlign(CENTER, CENTER);
     text("Froggy went to frog heaven...", width / 2, height / 3);
     //stop sounds
-    yum.pause();
-    ded.pause();
+    // yum.pause();
+    // ded.pause();
     //display happiness score
     displayScore();
 
@@ -238,7 +240,7 @@ function mainGame() {
     logKills(secondLog);
     // logKills(firstLog);
     // logKills(secondLog);
-    displayUI();
+    //displayUI();
 
 }
 
@@ -525,7 +527,6 @@ function logKills(log) {
         frog.body.y + frog.body.size > log.y
     ) {
         lose();
-        ded.play();
 
     }
 }
@@ -542,14 +543,16 @@ function mousePressed() {
 
 //displaying endscreen and score
 function lose() {
-    gameOver = true;
+    // gameOver = true;
+    ded.play();
+    endScreen();
 }
 
-function displayUI() {
-    if (gameOver) {
-        endScreen();
-    }
-}
+// function displayUI() {
+//     if (gameOver) {
+//         endScreen();
+//     }
+// }
 
 //end screen display score
 function displayScore() {
