@@ -9,14 +9,13 @@
  */
 
 
+
 //created our little character
 let yourself = {
     x: 200,
     y: 200,
     size: 30,
 };
-
-
 
 
 
@@ -33,10 +32,10 @@ function blueSetup() {
  * This will be called every frame when the blue variation is active
  */
 function blueDraw() {
-    background("blue");
-
+    background("white");
 
     you();
+    youmovement() 
 }
 
 
@@ -45,6 +44,31 @@ function you() {
     fill("black")
     ellipse(yourself.x, yourself.y, yourself.size)
 }
+
+
+//to make yourself move with the arrows
+
+function youmovement() {
+
+if (keyIsPressed){
+    if (keyCode == 38){
+      yourself.y-=3;
+    } else if (keyCode == 40){
+      yourself.y+=3;
+    }
+
+     if (keyCode == 37){
+      yourself.x-=3;
+    } else if (keyCode == 39){
+      yourself.x+=3;
+    }
+  
+  }
+  
+
+}
+
+
 
 
 
