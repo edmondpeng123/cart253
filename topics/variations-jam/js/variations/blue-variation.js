@@ -7,7 +7,25 @@
 /**
  * This will be called just before the blue variation starts
  */
+
+
+//created our little character
+let yourself = {
+    x: 200,
+    y: 200,
+    size: 30,
+};
+
+
+
+
+
+
+
+
 function blueSetup() {
+      createCanvas(400, 400);
+  
 
 }
 
@@ -16,11 +34,22 @@ function blueSetup() {
  */
 function blueDraw() {
     background("blue");
+
+
+    you();
 }
 
-/**
- * This will be called whenever a key is pressed while the blue variation is active
- */
+
+
+function you() {
+    fill("black")
+    ellipse(yourself.x, yourself.y, yourself.size)
+}
+
+
+
+
+
 function blueKeyPressed(event) {
     if (event.keyCode === 27) {
         state = "menu";

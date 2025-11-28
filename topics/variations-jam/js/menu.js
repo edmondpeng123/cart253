@@ -5,9 +5,13 @@
  */
 
 const menuText = `
-(R) Red variation
-(G) Green variation
-(B) Blue variation`
+
+Mind Game
+
+
+(R) Worry
+(G) Negativity
+(B) Rumination`
 
 /**
  * Display the main menu
