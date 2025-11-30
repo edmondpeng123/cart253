@@ -15,7 +15,7 @@ let yourself = {
     x: 200,
     y: 200,
     size: 30,
-    fill: "#000000",
+    // fill: "#000000",
 };
 
 
@@ -42,6 +42,8 @@ function blueDraw() {
     you();
     youmovement();
     yousize();
+    yourandomspacex();
+    yourandomspacey()
 }
 
 
@@ -59,15 +61,15 @@ function youmovement() {
 
 if (keyIsPressed){
     if (keyCode == 38){
-      yourself.y-=3;
+      yourself.y-=4;
     } else if (keyCode == 40){
-      yourself.y+=3;
+      yourself.y+=4;
     }
 
      if (keyCode == 37){
-      yourself.x-=3;
+      yourself.x-=4;
     } else if (keyCode == 39){
-      yourself.x+=3;
+      yourself.x+=4;
     }
   
   }
@@ -75,18 +77,35 @@ if (keyIsPressed){
 
 }
 
+//if press s or d, will change the size of the stroke; bigger or smaller
 function yousize() {
 
     if (keyIsPressed){
     if (keyCode == 83){
-      yourself.size+=1;
+      yourself.size+=2;
 
 } else if (keyCode == 65){
-      yourself.size-=1;
+      yourself.size-=2;
     }
     }
 }
-    
+    //if press 'r', with create circles at random spots in x value as well as change continuation of the stroke on x
+function yourandomspacex() {
+    if (keyIsPressed){
+    if (keyCode === 82){
+      yourself.x = random(0, 1000)
+}
+    }
+}
+
+//if press 'e', with create circles at random spots in y value as well as change continuation of the stroke on y
+function yourandomspacey() {
+    if (keyIsPressed){
+    if (keyCode === 69){
+      yourself.y = random(0, 700)
+}
+    }
+}
 
 
 

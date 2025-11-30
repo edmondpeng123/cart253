@@ -6,20 +6,24 @@
 
 const menuText = `
 
-If aliens made Microsoft Paint
+Microsoft (Pain)t
 
-
-(G) Negativity
-(B) Rumination`
+(G) About
+(B) Play`
 
 /**
  * Display the main menu
  */
 function menuDraw() {
-    background(0);
+     createCanvas(1000, 700);
+stroke(0);
+strokeWeight(2);
+rect(0, 0, width, height);
+
 
     push();
-    fill(255);
+    fill(0);
+    noStroke();
     textSize(32);
     textAlign(CENTER, CENTER);
     text(menuText, width / 2, height / 2);
