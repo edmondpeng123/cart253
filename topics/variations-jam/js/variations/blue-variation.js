@@ -23,7 +23,13 @@ let yourself = {
 
 
 function blueSetup() {
-      createCanvas(400, 400);
+      createCanvas(1000, 700);
+
+      noFill();
+stroke(0);
+strokeWeight(2);
+rect(0, 0, width, height);
+
   
 
 }
@@ -32,7 +38,6 @@ function blueSetup() {
  * This will be called every frame when the blue variation is active
  */
 function blueDraw() {
-    background("white");
 
     you();
     youmovement() 
@@ -42,6 +47,7 @@ function blueDraw() {
 
 function you() {
     fill("black")
+   
     ellipse(yourself.x, yourself.y, yourself.size)
 }
 
