@@ -6,10 +6,9 @@
 
 const menuText = `
 
-Mind Game
+If aliens made Microsoft Paint
 
 
-(R) Worry
 (G) Negativity
 (B) Rumination`
 
@@ -32,11 +31,6 @@ function menuDraw() {
  */
 function menuKeyPressed(event) {
     switch (event.keyCode) {
-        case 82:
-            state = "red-variation";
-            redSetup();
-            break;
-
         case 71:
             state = "green-variation";
             greenSetup();
