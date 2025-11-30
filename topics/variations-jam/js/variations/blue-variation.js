@@ -15,6 +15,7 @@ let yourself = {
     x: 200,
     y: 200,
     size: 30,
+    fill: "#000000",
 };
 
 
@@ -24,8 +25,6 @@ let yourself = {
 
 function blueSetup() {
       createCanvas(1000, 700);
-
-      noFill();
 stroke(0);
 strokeWeight(2);
 rect(0, 0, width, height);
@@ -39,15 +38,17 @@ rect(0, 0, width, height);
  */
 function blueDraw() {
 
+    
     you();
-    youmovement() 
+    youmovement();
+    yousize();
 }
 
 
 
 function you() {
-    fill("black")
    
+
     ellipse(yourself.x, yourself.y, yourself.size)
 }
 
@@ -73,6 +74,19 @@ if (keyIsPressed){
   
 
 }
+
+function yousize() {
+
+    if (keyIsPressed){
+    if (keyCode == 83){
+      yourself.size+=1;
+
+} else if (keyCode == 65){
+      yourself.size-=1;
+    }
+    }
+}
+    
 
 
 
