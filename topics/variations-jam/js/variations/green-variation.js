@@ -8,21 +8,33 @@
  * This will be called just before the green variation starts
  */
 function greenSetup() {
+  createCanvas(1000, 700);
+    stroke(0);
+    strokeWeight(1.6);
+    rect(0, 0, width, height);
+
+
+    fill(0);
+    rect(0, 600, width, height );
 
 }
+
 
 /**
  * This will be called every frame when the green variation is active
  */
 function greenDraw() {
-    background("green");
+
+
+
+ 
 }
 
 /**
  * This will be called whenever a key is pressed while the green variation is active
  */
 function greenKeyPressed(event) {
-    if (event.keyCode === 27) {
+    if (event.keyCode === 49) {
         state = "menu";
     }
 }

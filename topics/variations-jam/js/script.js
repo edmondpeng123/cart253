@@ -27,9 +27,6 @@ function draw() {
         case "menu":
             menuDraw();
             break;
-        case "red-variation":
-            redDraw();
-            break
         case "green-variation":
             greenDraw();
             break;
@@ -48,9 +45,6 @@ function mousePressed() {
         case "menu":
             menuMousePressed();
             break;
-        case "red-variation":
-            redMousePressed();
-            break
         case "green-variation":
             greenMousePressed();
             break;
@@ -69,9 +63,7 @@ function keyPressed(event) {
         case "menu":
             menuKeyPressed(event);
             break;
-        case "red-variation":
-            redKeyPressed(event);
-            break
+            
         case "green-variation":
             greenKeyPressed(event);
             break;

@@ -8,12 +8,20 @@ const menuTitle = `
 Design of Anxiety
 `
 
+const menusubTitle = `
+A playful web exploration on the experience of an anxious 
+student getting through his Design degree while dealing
+with different sorts of difficulties
+`
+
 
 const menuText = `
 
-(G) Imposter Syndrome
 
-(B) Learning Softwares On Your Own`
+Overview
+
+Click (1) to Start | Level_1: Imposter Syndrome
+Click (2) to Start | Level_2: Being Self-Taught`
 
 
 let titlefont;
@@ -39,18 +47,29 @@ rect(0, 0, width, height);
     fill(0);
     noStroke();
     textFont(titlefont);
-    textSize(44);
-    textAlign(CENTER, CENTER);
-    text(menuTitle, width / 2, height / 2.2);
+    textSize(55);
+    textAlign(LEFT, CENTER);
+    text(menuTitle, width / 4, height / 2.6);
     pop();
+
+
+    push();
+    fill(0);
+    noStroke();
+    textFont(subfont);
+    textSize(14);
+    textAlign(LEFT, CENTER);
+    text(menusubTitle, width / 4, height / 1.9);
+    pop();
+
 
  push();
     fill(0);
     noStroke();
     textFont(subfont);
     textSize(14);
-    textAlign(CENTER, CENTER);
-    text(menuText, width / 2, height / 1.6);
+    textAlign(LEFT, CENTER);
+    text(menuText, width / 4, height / 1.6);
     pop();
 
 
@@ -62,12 +81,11 @@ rect(0, 0, width, height);
  */
 function menuKeyPressed(event) {
     switch (event.keyCode) {
-        case 71:
+        case 49:
             state = "green-variation";
             greenSetup();
             break;
-
-        case 66:
+        case 50:
             state = "blue-variation";
             blueSetup();
             break;
