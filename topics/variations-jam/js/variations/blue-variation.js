@@ -9,14 +9,16 @@
  */
 
 const titleText = `
-Being Self-Taught : Counter-intuitive Software | Microsoft (Pain)T
+Being Self-Taught : Counter-intuitive Software
 
 1. Left/Right/Up/Bottom arrows to move
 2. S/A keys to modify stroke
 3. E/R keys to leave trails on X/Y value                 (2) Menu
 `
 
-
+const titlelogo = `
+Microsoft (Pain)t
+`
 
 
 
@@ -52,6 +54,14 @@ function sidebar() {
     textSize(12);
     textAlign(LEFT, CENTER);
     text(titleText, width/54, 48);
+    pop();
+
+ push();
+    noStroke();
+    textFont(titlefont);
+    textSize(20);
+    textAlign(LEFT, CENTER);
+    text(titlelogo, width/1.23, 20);
     pop();
 
 
