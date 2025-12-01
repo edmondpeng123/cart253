@@ -80,7 +80,7 @@ function blueDraw() {
     yousize();
     yourandomspacex();
     yourandomspacey();
-      sidebar();
+    sidebar();
 }
 
 

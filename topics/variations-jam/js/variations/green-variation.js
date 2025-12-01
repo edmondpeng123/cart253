@@ -29,8 +29,7 @@ function interface() {
     rect(0, 0, width, height);
 
 
-    fill(0);
-    rect(0, 600, width, height);
+  
 
 
 }
@@ -66,6 +65,7 @@ function greenDraw() {
 
     interface();
     egomovement();
+    egomovementy()
     ego();
 
 }
@@ -90,6 +90,23 @@ function egomovement() {
         egoman.x += 6;
     }
 }
+
+function egomovementy(){
+
+    if (keyIsPressed) {
+        if (keyCode == 38) {
+            egoman.y -= 6;
+        } else if (keyCode == 40) {
+            egoman.y += 6;
+        }
+    }
+     if (egoman.y > (680 - egoman.h/2)) {
+        egoman.y -= 6;
+    } else if (egoman.y < (-30 + egoman.h/2)) {
+        egoman.y += 6;
+    }
+}
+
 
 
 
