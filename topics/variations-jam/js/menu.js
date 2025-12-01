@@ -4,12 +4,24 @@
  * This keeps the stuff the menu needs to do *separate* from the rest of the program.
  */
 
+const menuTitle = `
+Design of Anxiety
+`
+
+
 const menuText = `
 
-Microsoft (Pain)t
+(G) Imposter Syndrome
 
-(G) About
-(B) Play`
+(B) Learning Softwares On Your Own`
+
+
+let titlefont;
+
+function preload() {
+  titlefont = loadFont('./assets/font/workbench.ttf');
+  subfont = loadFont('./assets/font/spacemono.ttf')
+}
 
 /**
  * Display the main menu
@@ -21,13 +33,28 @@ strokeWeight(2);
 rect(0, 0, width, height);
 
 
+
+
     push();
     fill(0);
     noStroke();
-    textSize(32);
+    textFont(titlefont);
+    textSize(44);
     textAlign(CENTER, CENTER);
-    text(menuText, width / 2, height / 2);
+    text(menuTitle, width / 2, height / 2.2);
     pop();
+
+ push();
+    fill(0);
+    noStroke();
+    textFont(subfont);
+    textSize(14);
+    textAlign(CENTER, CENTER);
+    text(menuText, width / 2, height / 1.6);
+    pop();
+
+
+
 }
 
 /**
