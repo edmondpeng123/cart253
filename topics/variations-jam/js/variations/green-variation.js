@@ -96,6 +96,7 @@ function greenDraw() {
     egomovementy()
     ego();
     thoughtsdraw();
+    thoughtscollide();
     // thoughtsy();
     // thoughtsx();
     // resetthought();
@@ -182,7 +183,7 @@ function thoughtsdraw() {
     for (let t of thoughts) {
         rect(t.x, t.y, t.w, t.h);
         text(t.text, t.x + t.w / 2, t.y + t.h / 2);
-        // Make it fall
+        // Make it fall from the side
         t.x += t.speed;
 
         // Reset when it goes off the screen
@@ -191,9 +192,9 @@ function thoughtsdraw() {
         }
     }
 
-    if (checkCollision(t, egoman)) {
-      handleCollision(t);
-    }
+    // if (checkCollision()) {
+    //   handleCollision(t);
+    // }
 }
 
 function newThought() {
@@ -220,20 +221,34 @@ function resetThought(t) {
 }
 
 
-function checkCollision(a, b) {
-  return (
-    abs(a.x - b.x) < (a.w / 2 + b.w / 2) &&
-    abs(a.y - b.y) < (a.h / 2 + b.h / 2)
-  );
-}
+// function checkCollision(a, b) {
+//   return (
+//     abs(a.x - b.x) < (a.w / 2 + b.w / 2) &&
+//     abs(a.y - b.y) < (a.h / 2 + b.h / 2)
+//   );
+// }
 
 
-function handleCollision(t) {
-  resetThought(t);
-}
+// function handleCollision(t) {
+//   resetThought(t);
+// }
 
 
+// function thoughtscollide() {
 
+//     if (
+// 		egoman.x - egoman.w/2 < t.x + t.w/2 &&
+// 		egoman.x + egoman.w/2 > t.x - t.w/2 &&
+// 		egoman.y - egoman.h/2 < t.y + t.h/2 &&
+// 		egoman.y + egoman.h/2 > t.y - t.h/2
+	
+// 	){
+//       fill(255, 0, 0) // Collision!
+// 	} else {
+//       fill(0)
+//     }
+  
+// }
 
 
 
