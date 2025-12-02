@@ -21,24 +21,27 @@ const menuText = `
 Overview
 
 Click (1) to Start | Level_1: Imposter Syndrome
-Click (2) to Start | Level_2: Being Self-Taught`
+Click (2) to Start | Level_2: Being Self-Taught
+Click (3) to Start | Level_3: Rumination
+
+`
 
 
 let titlefont;
 
 function preload() {
-  titlefont = loadFont('./assets/font/workbench.ttf');
-  subfont = loadFont('./assets/font/spacemono.ttf')
+    titlefont = loadFont('./assets/font/workbench.ttf');
+    subfont = loadFont('./assets/font/spacemono.ttf')
 }
 
 /**
  * Display the main menu
  */
 function menuDraw() {
-     createCanvas(1000, 700);
-stroke(0);
-strokeWeight(2);
-rect(0, 0, width, height);
+    createCanvas(1000, 700);
+    stroke(0);
+    strokeWeight(2);
+    rect(0, 0, width, height);
 
 
 
@@ -63,7 +66,7 @@ rect(0, 0, width, height);
     pop();
 
 
- push();
+    push();
     fill(0);
     noStroke();
     textFont(subfont);
@@ -89,6 +92,11 @@ function menuKeyPressed(event) {
             state = "blue-variation";
             blueSetup();
             break;
+        case 51:
+            state = "red-variation";
+            blueSetup();
+            break;
+
     }
 }
 

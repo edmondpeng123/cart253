@@ -96,7 +96,8 @@ function greenDraw() {
     egomovementy()
     ego();
     thoughtsdraw();
-    thoughtscollide();
+    // thoughtscollide();
+    newThought();
     // thoughtsy();
     // thoughtsx();
     // resetthought();
@@ -182,7 +183,7 @@ function thoughtsdraw() {
 
     for (let t of thoughts) {
         rect(t.x, t.y, t.w, t.h);
-        text(t.text, t.x + t.w / 2, t.y + t.h / 2);
+        // text(t.text, t.x + t.w / 2, t.y + t.h / 2);
         // Make it fall from the side
         t.x += t.speed;
 
@@ -203,7 +204,7 @@ function newThought() {
 
     return {
         x: random(50, width),
-        y: random(50, height - 50), // start above screen
+        y: random(50, height - 50), // start side of screen
         w: 150,
         h: random(80, 120),
         speed: random(1, 5),
@@ -234,7 +235,7 @@ function resetThought(t) {
 // }
 
 
-// function thoughtscollide() {
+// function thoughtscollide(t) {
 
 //     if (
 // 		egoman.x - egoman.w/2 < t.x + t.w/2 &&

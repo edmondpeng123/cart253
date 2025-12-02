@@ -33,6 +33,10 @@ function draw() {
         case "blue-variation":
             blueDraw();
             break;
+        case "red-variation":
+            redDraw();
+            break;
+
     }
 }
 
@@ -51,6 +55,11 @@ function mousePressed() {
         case "blue-variation":
             blueMousePressed();
             break;
+        case "red-variation":
+            redMousePressed();
+            break;
+
+
     }
 }
 
@@ -63,12 +72,16 @@ function keyPressed(event) {
         case "menu":
             menuKeyPressed(event);
             break;
-            
+
         case "green-variation":
             greenKeyPressed(event);
             break;
         case "blue-variation":
             blueKeyPressed(event);
+            break;
+
+        case "red-variation":
+            redKeyPressed(event);
             break;
     }
 }
