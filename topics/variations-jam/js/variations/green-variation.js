@@ -16,8 +16,30 @@ const egoman = {
 
 let egotext = "EGO"
 
+const thoughty = {
+    x: 150,
+    y: 200,
+    w: 50,
+    h: 150,
+    speed: 1,
+
+}
+
+const thoughtx = {
+    x: 0,
+    y: 20,
+    w: 100,
+    h: 50,
+    speed: 4,
+
+}
 
 
+let thoughtData = undefined;
+
+function preload() {
+    thoughtData = loadJSON("assets/data/thoughts.json")
+}
 
 
 
@@ -29,7 +51,7 @@ function interface() {
     rect(0, 0, width, height);
 
 
-  
+
 
 
 }
@@ -67,6 +89,9 @@ function greenDraw() {
     egomovement();
     egomovementy()
     ego();
+    thoughtsy();
+    thoughtsx();
+    resetthought();
 
 }
 
@@ -84,14 +109,14 @@ function egomovement() {
     }
 
     //make the egoman stay within the width of the screen
-     if (egoman.x > (976 - egoman.w/2)) {
+    if (egoman.x > (976 - egoman.w / 2)) {
         egoman.x -= 6;
-    } else if (egoman.x < (-30 + egoman.w/2)) {
+    } else if (egoman.x < (-30 + egoman.w / 2)) {
         egoman.x += 6;
     }
 }
 
-function egomovementy(){
+function egomovementy() {
 
     if (keyIsPressed) {
         if (keyCode == 38) {
@@ -100,16 +125,46 @@ function egomovementy(){
             egoman.y += 6;
         }
     }
-     if (egoman.y > (680 - egoman.h/2)) {
+    if (egoman.y > (680 - egoman.h / 2)) {
         egoman.y -= 6;
-    } else if (egoman.y < (-30 + egoman.h/2)) {
+    } else if (egoman.y < (-30 + egoman.h / 2)) {
         egoman.y += 6;
     }
 }
 
 
 
+function thoughtsx() {
 
+    rect(thoughtx.x, thoughtx.y, thoughtx.w, thoughtx.h);
+    thoughtx.x += thoughtx.speed;
+
+
+    if (thoughtx.x > width) {
+        resetthought();
+    }
+
+    if (thoughtx.y > width) {
+        resetthought();
+    }
+
+}
+
+function thoughtsy() {
+
+    rect(thoughty.x, thoughty.y, thoughty.w, thoughty.h);
+    thoughty.y += thoughty.speed;
+
+    if (thoughty.y > height) {
+        resetthought();
+    }
+}
+
+
+function resetthought() {
+    thoughty.y = -thoughty.h;
+    thoughty.x = random(50, 1000);
+}
 
 
 
