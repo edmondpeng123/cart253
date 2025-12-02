@@ -62,6 +62,7 @@ function interface() {
  */
 function greenSetup() {
     createCanvas(800, 600);
+    // rectMode(CENTER);
 
 
     for (let i = 0; i < totalThoughts; i++) {
@@ -189,6 +190,10 @@ function thoughtsdraw() {
             resetThought(t);
         }
     }
+
+    if (checkCollision(t, egoman)) {
+      handleCollision(t);
+    }
 }
 
 function newThought() {
@@ -215,6 +220,24 @@ function resetThought(t) {
 }
 
 
+function checkCollision(a, b) {
+  return (
+    abs(a.x - b.x) < (a.w / 2 + b.w / 2) &&
+    abs(a.y - b.y) < (a.h / 2 + b.h / 2)
+  );
+}
+
+
+function handleCollision(t) {
+  resetThought(t);
+}
+
+
+
+
+
+
+
 /**
  * This will be called whenever a key is pressed while the green variation is active
  */
@@ -230,3 +253,4 @@ function greenKeyPressed(event) {
 function greenMousePressed() {
 
 }
+
