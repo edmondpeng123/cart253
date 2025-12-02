@@ -3,7 +3,7 @@
  * Note how it has its own draw, greenDraw(), and its own keyPressed, greenKeyPressed().
  * This keeps the stuff the menu needs to do *separate* from the rest of the program.
  */
-
+ 
 
 const egoman = {
     x: 20,
@@ -16,29 +16,30 @@ const egoman = {
 
 let egotext = "EGO"
 
-const thoughty = {
-    x: 150,
-    y: 200,
-    w: 50,
-    h: 150,
-    speed: 1,
+// const thoughty = {
+//     x: 150,
+//     y: 200,
+//     w: 50,
+//     h: 150,
+//     speed: 1,
 
-}
+// }
 
-const thoughtx = {
-    x: 0,
-    y: 20,
-    w: 100,
-    h: 50,
-    speed: 4,
+// const thoughtx = {
+//     x: 0,
+//     y: 20,
+//     w: 100,
+//     h: 50,
+//     speed: 4,
 
-}
+// }
 
 
-let thoughtData = undefined;
+let thoughtData;
+
 
 function preload() {
-    thoughtData = loadJSON("assets/data/thoughts.json")
+    thoughtData = loadJSON("../assets/data/thoughts.json")
 }
 
 
@@ -60,7 +61,12 @@ function interface() {
  * This will be called just before the green variation starts
  */
 function greenSetup() {
+    createCanvas(800, 600);
 
+
+    for (let i = 0; i < totalThoughts; i++) {
+        thoughts.push(newThought());
+    }
 }
 
 //making the little character
@@ -84,14 +90,14 @@ function ego() {
  */
 function greenDraw() {
     background(255);
-
     interface();
     egomovement();
     egomovementy()
     ego();
-    thoughtsy();
-    thoughtsx();
-    resetthought();
+    thoughtsdraw();
+    // thoughtsy();
+    // thoughtsx();
+    // resetthought();
 
 }
 
@@ -134,38 +140,79 @@ function egomovementy() {
 
 
 
-function thoughtsx() {
+// function thoughtsx() {
 
-    rect(thoughtx.x, thoughtx.y, thoughtx.w, thoughtx.h);
-    thoughtx.x += thoughtx.speed;
+//     rect(thoughtx.x, thoughtx.y, thoughtx.w, thoughtx.h);
+//     thoughtx.x += thoughtx.speed;
 
 
-    if (thoughtx.x > width) {
-        resetthought();
+//     if (thoughtx.x > width) {
+//         resetthought();
+//     }
+
+//     if (thoughtx.y > width) {
+//         resetthought();
+//     }
+
+// }
+
+// function thoughtsy() {
+
+//     rect(thoughty.x, thoughty.y, thoughty.w, thoughty.h);
+//     thoughty.y += thoughty.speed;
+
+//     if (thoughty.y > height) {
+//         resetthought();
+//     }
+// }
+
+
+// function resetthought() {
+//     thoughty.y = -thoughty.h;
+//     thoughty.x = random(50, 1000);
+// }
+// const anxiety = thoughtData.anxiety;
+let thoughts = [];
+let totalThoughts = 12; // How many falling objects
+
+function thoughtsdraw() {
+    //   background(220);
+
+    for (let t of thoughts) {
+        rect(t.x, t.y, t.w, t.h);
+        text(t.text, t.x + t.w / 2, t.y + t.h / 2);
+        // Make it fall
+        t.x += t.speed;
+
+        // Reset when it goes off the screen
+        if (t.x > width) {
+            resetThought(t);
+        }
     }
-
-    if (thoughtx.y > width) {
-        resetthought();
-    }
-
 }
 
-function thoughtsy() {
+function newThought() {
 
-    rect(thoughty.x, thoughty.y, thoughty.w, thoughty.h);
-    thoughty.y += thoughty.speed;
+// const anxiety = thoughtData.anxiety;
 
-    if (thoughty.y > height) {
-        resetthought();
-    }
+    return {
+        x: random(50, width),
+        y: random(50, height - 50), // start above screen
+        w: 150,
+        h: random(80, 120),
+        speed: random(1, 5),
+        // text: random(anxiety),
+    };
 }
 
+function resetThought(t) {
 
-function resetthought() {
-    thoughty.y = -thoughty.h;
-    thoughty.x = random(50, 1000);
+    // const anxiety = thoughtData.anxiety;
+    
+    t.x = random(-200, -50);
+    t.y = random(50, width - 50);
+    // t.text = random(anxiety);
 }
-
 
 
 /**
