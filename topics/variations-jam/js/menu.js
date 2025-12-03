@@ -26,10 +26,11 @@ Click (3) to Start | Level_3: Rumination
 
 `
 
-
+let thoughtData;
 let titlefont;
 
 function preload() {
+    thoughtData = loadJSON("assets/data/thoughts.json");
     titlefont = loadFont('./assets/font/workbench.ttf');
     subfont = loadFont('./assets/font/spacemono.ttf')
 }

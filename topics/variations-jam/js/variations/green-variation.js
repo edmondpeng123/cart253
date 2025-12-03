@@ -3,7 +3,7 @@
  * Note how it has its own draw, greenDraw(), and its own keyPressed, greenKeyPressed().
  * This keeps the stuff the menu needs to do *separate* from the rest of the program.
  */
- 
+
 
 const egoman = {
     x: 20,
@@ -33,15 +33,6 @@ let egotext = "EGO"
 //     speed: 4,
 
 // }
-
-
-let thoughtData;
-
-
-function preload() {
-    thoughtData = loadJSON("../assets/data/thoughts.json")
-}
-
 
 
 function interface() {
@@ -90,6 +81,8 @@ function ego() {
  * This will be called every frame when the green variation is active
  */
 function greenDraw() {
+
+    console.log(thoughtData);
     background(255);
     interface();
     egomovement();
@@ -176,14 +169,27 @@ function egomovementy() {
 // }
 // const anxiety = thoughtData.anxiety;
 let thoughts = [];
-let totalThoughts = 12; // How many falling objects
+let totalThoughts = 15; // quantity of thoughts popping up
 
 function thoughtsdraw() {
     //   background(220);
 
     for (let t of thoughts) {
+        // rectMode(CENTER);
+        push()
+        noFill()
+        // fill(255);
+        noStroke();
         rect(t.x, t.y, t.w, t.h);
-        // text(t.text, t.x + t.w / 2, t.y + t.h / 2);
+        pop();
+
+
+        push()
+         fill(0);
+        noStroke();
+        text(t.text, t.x + t.w / 2, t.y + t.h / 2);
+        
+        pop()
         // Make it fall from the side
         t.x += t.speed;
 
@@ -200,7 +206,7 @@ function thoughtsdraw() {
 
 function newThought() {
 
-// const anxiety = thoughtData.anxiety;
+    // const anxiety = thoughtData.anxiety;
 
     return {
         x: random(50, width),
@@ -208,17 +214,17 @@ function newThought() {
         w: 150,
         h: random(80, 120),
         speed: random(1, 5),
-        // text: random(anxiety),
+        text: random(thoughtData.anxiety),
     };
 }
 
 function resetThought(t) {
 
     // const anxiety = thoughtData.anxiety;
-    
+
     t.x = random(-200, -50);
     t.y = random(50, width - 50);
-    // t.text = random(anxiety);
+    t.text = random(thoughtData.anxiety);
 }
 
 
@@ -242,13 +248,13 @@ function resetThought(t) {
 // 		egoman.x + egoman.w/2 > t.x - t.w/2 &&
 // 		egoman.y - egoman.h/2 < t.y + t.h/2 &&
 // 		egoman.y + egoman.h/2 > t.y - t.h/2
-	
+
 // 	){
 //       fill(255, 0, 0) // Collision!
 // 	} else {
 //       fill(0)
 //     }
-  
+
 // }
 
 
