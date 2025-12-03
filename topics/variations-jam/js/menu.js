@@ -95,7 +95,7 @@ function menuKeyPressed(event) {
             break;
         case 51:
             state = "red-variation";
-            blueSetup();
+            redSetup();
             break;
 
     }

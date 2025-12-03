@@ -1,12 +1,12 @@
 
 
-let c; let size = 100;
+// let c; let size = 100;
 
 function redSetup() {
 
     createCanvas(1000, 700);
 
-    c = new Circle(width/2, height/2, 0, 0);
+    // c = new Circle(width/2, height/2, 0, 0);
 
 }
 
@@ -20,10 +20,14 @@ function walls() {
 
 function redDraw() {
 background(255);
-let distance = dist(mouseX, mouseY, c.x, c.y);
-c.dh = distance;
-c.dw = distance;
-c.display();
+
+walls();
+eyeballs();
+
+// let distance = dist(mouseX, mouseY, c.x, c.y);
+// c.dh = distance;
+// c.dw = distance;
+// c.display();
 
 // let distance = dist(mouseX, mouseY, width/2, height/2);
 
@@ -38,6 +42,23 @@ c.display();
 
 }
 
+
+function eyeballs() {
+
+let x = mouseX + 5;
+let y = 0;
+let diameter = 40;
+
+let numCircles = map(mouseY, 0, height, 0, 15);
+
+for (let i = 0; i < numCircles; i++) {
+
+ellipse(x,y, diameter);
+
+
+y += diameter;
+}
+}
 
 
 
