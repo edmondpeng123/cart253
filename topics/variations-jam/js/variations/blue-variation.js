@@ -24,8 +24,8 @@ Microsoft (Pain)t
 
 //created our little character
 let yourself = {
-    x: 200,
-    y: 200,
+    x: 500,
+    y: 350,
     size: 30,
     // fill: "#000000",
 };
