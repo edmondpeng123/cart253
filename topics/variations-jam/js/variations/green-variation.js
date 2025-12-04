@@ -39,7 +39,7 @@ const rumitext = `
 Objective: Maintain your mental health by dodging anxious thoughts 
 (up/down/left/right arrows)
 
-Click anywhere to Start                            Back to Menu(1)
+Click anywhere to Start                            (1)Back to Menu
 
 POVs (Point of views)
 1. You spent three weeks thinking of a concept and 

@@ -13,7 +13,7 @@ Being Self-Taught : Counter-intuitive Software
 
 1. Left/Right/Up/Bottom arrows to move
 2. S/A keys to modify stroke
-3. E/R keys to leave trails on X/Y value                 (2) Menu
+3. E/R keys to leave trails on X/Y value          (2)Back to Menu
 `
 
 const titlelogo = `
@@ -48,9 +48,11 @@ function blueSetup() {
 
 function sidebar() {
 
-
+push();
+ stroke(0);
+    strokeWeight(1);
     rect(10, 10, width, height / 4);
-
+pop();
     push();
     noStroke();
     textFont(subfont);
