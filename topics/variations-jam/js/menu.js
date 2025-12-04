@@ -39,10 +39,12 @@ function preload() {
  * Display the main menu
  */
 function menuDraw() {
+
+    rectMode(CENTER);
     createCanvas(1000, 700);
     stroke(0);
     strokeWeight(2);
-    rect(0, 0, width, height);
+    rect(width/2, height/2, width, height);
 
 
 

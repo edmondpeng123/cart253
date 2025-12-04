@@ -35,35 +35,43 @@ let egotext = "EGO"
 // }
 
 
-function interface() {
-
-    createCanvas(1000, 700);
-    stroke(0);
-    strokeWeight(1.6);
-    rect(0, 0, width, height);
-
-
-
-
-
-}
 
 /**
  * This will be called just before the green variation starts
  */
 function greenSetup() {
-    createCanvas(800, 600);
+    createCanvas(1000, 700);
+    
+
+
+
     // rectMode(CENTER);
 
-
+thoughts = [];
     for (let i = 0; i < totalThoughts; i++) {
         thoughts.push(newThought());
     }
+
+
+
+}
+
+function interface() {
+
+
+    // createCanvas(1000, 700);
+    // rectMode(CENTER);
+ stroke(0);
+    strokeWeight(1.6);
+    rect(width/2, height/2, width, height);
+
+
 }
 
 //making the little character
 function ego() {
 
+    rectMode(CENTER);
     fill(0);
     rect(egoman.x, egoman.y, egoman.w, egoman.h);
 
@@ -72,7 +80,7 @@ function ego() {
 
     fill(255);
     textFont(subfont);
-    text(egotext, egoman.x + egoman.w / 2, egoman.y + egoman.h / 2);
+    text(egotext, egoman.x + egoman.w/14, egoman.y - egoman.h/10);
 
 }
 
@@ -84,8 +92,37 @@ function greenDraw() {
 
     console.log(thoughtData);
     background(255);
-    interface();
-    egomovement();
+
+
+     //setting up the start screen into the main game screen and the end screen
+   if (whichscreen === "maingame") {
+        mainGame()
+
+    } else if (whichscreen == "endgame"){
+        endScreen()
+    }
+
+
+    
+    // egomovement();
+    // egomovementy()
+    // ego();
+    // thoughtsdraw();
+    // // thoughtscollide();
+    // newThought();
+    // // thoughtsy();
+    // // thoughtsx();
+    // // resetthought();
+}
+
+
+function mainGame() {
+
+whichscreen = "maingame";
+
+     background(255);
+     
+     egomovement();
     egomovementy()
     ego();
     thoughtsdraw();
@@ -94,9 +131,11 @@ function greenDraw() {
     // thoughtsy();
     // thoughtsx();
     // resetthought();
-
 }
 
+function endScreen() {
+     whichscreen = "endgame";
+}
 
 
 function egomovement() {
@@ -111,9 +150,9 @@ function egomovement() {
     }
 
     //make the egoman stay within the width of the screen
-    if (egoman.x > (976 - egoman.w / 2)) {
+    if (egoman.x > (1000 - egoman.w / 2)) {
         egoman.x -= 6;
-    } else if (egoman.x < (-30 + egoman.w / 2)) {
+    } else if (egoman.x < (egoman.w / 2)) {
         egoman.x += 6;
     }
 }
@@ -127,14 +166,16 @@ function egomovementy() {
             egoman.y += 6;
         }
     }
-    if (egoman.y > (680 - egoman.h / 2)) {
+    if (egoman.y > (700 - egoman.h / 2)) {
         egoman.y -= 6;
-    } else if (egoman.y < (-30 + egoman.h / 2)) {
+    } else if (egoman.y < (egoman.h / 2)) {
         egoman.y += 6;
     }
 }
 
-
+function healthbar() {
+    
+}
 
 // function thoughtsx() {
 
@@ -172,22 +213,29 @@ let thoughts = [];
 let totalThoughts = 15; // quantity of thoughts popping up
 
 function thoughtsdraw() {
+
+    rectMode(CENTER);
     //   background(220);
 
     for (let t of thoughts) {
         // rectMode(CENTER);
         push()
-        noFill()
-        // fill(255);
-        noStroke();
+        // noFill();
+        fill(255);
+        // noStroke();
+        stroke(0);
+        strokeWeight(1);
         rect(t.x, t.y, t.w, t.h);
         pop();
 
 
-        push()
-         fill(0);
+
+        push();
+        thoughtscollide(t);
+         //fill(0);
         noStroke();
-        text(t.text, t.x + t.w / 2, t.y + t.h / 2);
+        text(t.text, t.x + t.w / 12, t.y + t.h / 14);
+        textAlign(CENTER, CENTER);
         
         pop()
         // Make it fall from the side
@@ -211,9 +259,9 @@ function newThought() {
     return {
         x: random(50, width),
         y: random(50, height - 50), // start side of screen
-        w: 150,
-        h: random(80, 120),
-        speed: random(1, 5),
+        w: 300,
+        h: random(20, 60),
+        speed: random(1, 6),
         text: random(thoughtData.anxiety),
     };
 }
@@ -223,7 +271,7 @@ function resetThought(t) {
     // const anxiety = thoughtData.anxiety;
 
     t.x = random(-200, -50);
-    t.y = random(50, width - 50);
+    t.y = random(50, height - 50);
     t.text = random(thoughtData.anxiety);
 }
 
@@ -241,21 +289,23 @@ function resetThought(t) {
 // }
 
 
-// function thoughtscollide(t) {
+function thoughtscollide(t) {
 
-//     if (
-// 		egoman.x - egoman.w/2 < t.x + t.w/2 &&
-// 		egoman.x + egoman.w/2 > t.x - t.w/2 &&
-// 		egoman.y - egoman.h/2 < t.y + t.h/2 &&
-// 		egoman.y + egoman.h/2 > t.y - t.h/2
+    //console.log(egoman.x - egoman.w / 2 < t.x + t.w / 2)
+    if (
+		egoman.x - egoman.w/2 < t.x + t.w/2 &&
+		egoman.x + egoman.w/2 > t.x - t.w/2 &&
+		egoman.y - egoman.h/2 < t.y + t.h/2 &&
+		egoman.y + egoman.h/2 > t.y - t.h/2
 
-// 	){
-//       fill(255, 0, 0) // Collision!
-// 	} else {
-//       fill(0)
-//     }
+	){
+        console.log(t.text);
+      fill(255, 0, 0) // Collision!
+	} else {
+      fill(0)
+    }
 
-// }
+}
 
 
 

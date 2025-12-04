@@ -34,19 +34,22 @@ let yourself = {
 
 function blueSetup() {
 
+    rectMode(CENTER);
     createCanvas(1000, 700);
     stroke(0);
     strokeWeight(1.6);
-    rect(0, 0, width, height);
+    rect(width/2, height/2, width, height);
 
 
 }
 
 
 
+
 function sidebar() {
 
-    rect(10, 10, width / 2, height / 8);
+
+    rect(10, 10, width, height / 4);
 
     push();
     noStroke();
@@ -74,6 +77,9 @@ function sidebar() {
  */
 function blueDraw() {
 
+
+
+
   
     you();
     youmovement();
@@ -82,7 +88,6 @@ function blueDraw() {
     yourandomspacey();
     sidebar();
 }
-
 
 
 function you() {
