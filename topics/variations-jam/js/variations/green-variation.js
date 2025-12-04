@@ -51,7 +51,17 @@ you realize mid-speech how confusing and schizophrenic you sound.
 3. You just presented your project and it went so bad that 
 you're rethinking all of your social interactions.
 `
+const losetitle =  'Burnout'
 
+const losetext = `
+
+Oh no, you gave in to your anxiety.
+You are mentally tapped out...
+Please take some time to rest well :-(
+
+
+Refresh to go back to Menu.
+`
 
 // const thoughty = {
 //     x: 150,
@@ -236,6 +246,23 @@ function endScreen() {
     rect(width / 2, height / 2, width, height);
     pop();
 
+     push();
+    fill(255);
+    noStroke();
+    textFont(titlefont);
+    textSize(55);
+    textAlign(LEFT, CENTER);
+    text(losetitle, width / 4, height / 2.6);
+    pop();
+
+     push();
+    fill(255);
+    noStroke();
+    textFont(subfont);
+    textSize(12);
+    textAlign(LEFT, CENTER);
+    text(losetext, width / 4, height / 1.9);
+    pop();
 
 
 }
