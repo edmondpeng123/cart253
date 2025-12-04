@@ -20,9 +20,9 @@ const menuText = `
 
 Overview
 
-Click (1) to Start | Level_1: Imposter Syndrome
-Click (2) to Start | Level_2: Being Self-Taught
-Click (3) to Start | Level_3: Rumination
+Click (1) to Start | Level_1: Rumination
+Click (2) to Start | Level_2: Microsoft (Pain)t
+Click (3) to Start | Level_3: Imposter Syndrome
 
 `
 
@@ -73,7 +73,7 @@ function menuDraw() {
     fill(0);
     noStroke();
     textFont(subfont);
-    textSize(14);
+    textSize(12);
     textAlign(LEFT, CENTER);
     text(menuText, width / 4, height / 1.6);
     pop();
