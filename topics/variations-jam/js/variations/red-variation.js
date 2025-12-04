@@ -2,26 +2,42 @@
 
 // let c; let size = 100;
 
+let cols; let rows;
+
+let spacing = 20;
+
+let size = []
+
+
 function redSetup() {
 
 
     createCanvas(1000, 700);
 
+    cols = width/spacing;
+    rows = height/spacing;
+
+    for(let i=0; i<cols; i++) {
+        size[i] = [];
+        for(let j=0; j<rows; j++){
+            size[i][j]= 10;
+        }
+    }
+
     // c = new Circle(width/2, height/2, 0, 0);
 
 }
 
-function walls() {
-    stroke(0);
-    strokeWeight(1.6);
-    rect(width/2, height/2, width, height);
-
-
-}
 
 function redDraw() {
     background(255);
     
+    //creating a grid from columns and rows
+    for(let i=0; i<cols; i++){
+        for(let j=0; j<rows; j++){
+            rect(i*spacing, j*spacing, size[i][j], size[i][j])
+        }
+    }
 
     walls();
   
@@ -40,6 +56,17 @@ function redDraw() {
     // fill(0);
     // ellipse(width/2, height/2, distance/2, distance)
 
+
+}
+
+function walls() {
+
+    push();
+    noFill();
+    stroke(0);
+    strokeWeight(1.6);
+    rect(width/2, height/2, width, height);
+pop();
 
 }
 

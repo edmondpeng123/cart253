@@ -55,9 +55,9 @@ const losetitle =  'Burnout'
 
 const losetext = `
 
-Oh no, you gave in to your anxiety.
+Oh no!
 You are mentally tapped out...
-Please take some time to rest well :-(
+Please take some time to rest :-(
 
 
 Refresh to go back to Menu.

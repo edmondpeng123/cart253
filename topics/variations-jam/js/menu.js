@@ -20,9 +20,9 @@ const menuText = `
 
 Overview
 
-Click (1) to Start | Level_1: Rumination
+Click (1) to Start | Level_1: Rumination (Imposter Syndrome)
 Click (2) to Start | Level_2: Microsoft (Pain)t
-Click (3) to Start | Level_3: Imposter Syndrome
+Click (3) to Start | Level_3: Design Ethos?
 
 `
 
