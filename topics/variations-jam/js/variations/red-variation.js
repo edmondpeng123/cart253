@@ -5,7 +5,7 @@
 let cols; let rows;
 
 let spacing = 20;
-
+let scl = 0.15;
 let size = []
 
 
@@ -19,12 +19,7 @@ rectMode(CENTER);
     cols = width/spacing;
     rows = height/spacing;
 
-    for(let i=0; i<cols; i++) {
-        size[i] = [];
-        for(let j=0; j<rows; j++){
-            size[i][j]= 10;
-        }
-    }
+  
 
     // c = new Circle(width/2, height/2, 0, 0);
 
@@ -32,11 +27,22 @@ rectMode(CENTER);
 
 
 function redDraw() {
-    background(255);
+    background(0);
     
+  for(let i=0; i<cols; i++) {
+        size[i] = [];
+        for(let j=0; j<rows; j++){
+            size[i][j]= (dist(mouseX, mouseY, spacing/2 + i*spacing, spacing/2 + j*spacing))*scl;
+        }
+    }
+
+
+
     //creating a grid from columns and rows
     for(let i=0; i<cols; i++){
         for(let j=0; j<rows; j++){
+            fill(255);
+            // noStroke();
             rect(spacing/2 + i*spacing, spacing/2 + j*spacing, size[i][j], size[i][j])
         }
     }
