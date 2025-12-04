@@ -14,6 +14,8 @@ function redSetup() {
 
     createCanvas(1000, 700);
 
+rectMode(CENTER);
+
     cols = width/spacing;
     rows = height/spacing;
 
@@ -35,7 +37,7 @@ function redDraw() {
     //creating a grid from columns and rows
     for(let i=0; i<cols; i++){
         for(let j=0; j<rows; j++){
-            rect(i*spacing, j*spacing, size[i][j], size[i][j])
+            rect(spacing/2 + i*spacing, spacing/2 + j*spacing, size[i][j], size[i][j])
         }
     }
 
