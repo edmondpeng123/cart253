@@ -112,6 +112,15 @@ function greenDraw() {
         endScreen()
     }
 
+    if (gameOver) {
+        endScreen();
+        return;
+    }
+
+     if (health.h <= 0) {
+        gameOver = true;
+    }
+
     //    startGame();
     //     mainGame();
     //  endScreen();
