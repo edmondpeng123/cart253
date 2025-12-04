@@ -137,18 +137,18 @@ function greenDraw() {
 }
 
 
-function interface() {
+// function interface() {
 
 
-    // // createCanvas(1000, 700);
-    // // rectMode(CENTER);
-    // push();
-    // stroke(0);
-    // strokeWeight(1.6);
-    // rect(width / 2, height / 2, width, height);
-    // pop();
+//     // // createCanvas(1000, 700);
+//     // // rectMode(CENTER);
+//     // push();
+//     // stroke(0);
+//     // strokeWeight(1.6);
+//     // rect(width / 2, height / 2, width, height);
+//     // pop();
 
-}
+// }
 
 //making the little character
 function ego() {
@@ -433,14 +433,6 @@ function thoughtscollide(t) {
 
 }
 
-function zerohealth() {
-if (
-       health.h === 0
-
-    ) {  endScreen();
-
-}
-}
 
 
 
