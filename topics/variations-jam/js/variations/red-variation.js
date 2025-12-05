@@ -108,7 +108,7 @@ function redDraw() {
 }
 
 function intro() {
-    whichscreen === "start"
+    // whichscreen === "start"
     push();
     stroke(0);
     strokeWeight(1.6);
@@ -144,9 +144,10 @@ function mainsearch() {
 
     ethoshide();
     grid();
+    hoverbox();
     // resetethos();
     pointshow();
-    mousePressed();
+    // mousePressed();
 
 
 }
@@ -154,7 +155,7 @@ function mainsearch() {
 
 
 function walls() {
-
+    rectMode(CENTER);
     push();
     noFill();
     stroke(0);
@@ -164,6 +165,14 @@ function walls() {
 
 }
 
+function hoverbox() {
+    push();
+    noStroke();
+    noFill();
+    rect(ethosblob.x, ethosblob.y, ethosblob.w / 6, ethosblob.h / 12);
+    pop();
+}
+
 function ethoshide() {
     rectMode(CENTER);
 
@@ -171,13 +180,14 @@ function ethoshide() {
     stroke(255);
     strokeWeight(1);
     noFill();
-    rect(ethosblob.x, ethosblob.y, ethosblob.w/4, ethosblob.h/8);
+    rect(ethosblob.x, ethosblob.y, ethosblob.w / 6, ethosblob.h / 12);
     pop();
 
     push();
     fill(255);
-    text("purpose", ethosblob.w, ethosblob.h);
+    textFont(subfont);
     textAlign(CENTER, CENTER);
+    text("purpose", ethosblob.x, ethosblob.y);
     pop();
 
 }
@@ -212,36 +222,49 @@ function grid() {
 }
 
 function resetethos() {
-ethosblob.x = random(50,900)
-ethosblob.y = random(50,600)
+    ethosblob.x = random(50, 900)
+    ethosblob.y = random(50, 600)
 }
 
 function pointshow() {
+    rectMode(CENTER);
     push();
     fill(255);
-    rect(width / 2, 60, width/8, 30);
+    rect(width / 2, 60, width / 6, 30);
     pop();
 
     push();
     fill(0);
     noStroke();
+    textSize(20);
+    textFont(subfont);
+    textAlign(CENTER, CENTER);
     text("Points: " + points, width / 2, 60);
+
     pop();
 }
 
-function mousePressed() {
+function redMousePressed() {
 
-    if (
-        mouseX > ethosblob.x &&
-        mouseX < ethosblob.x + ethosblob.w / 7 &&
-        mouseY > ethosblob.y &&
-        mouseY < ethosblob.y + ethosblob.h / 11
-    ) {
-        resetethos();
-        points++;
+
+    if (screen === "main") {
+        let bw = ethosblob.w / 6;
+        let bh = ethosblob.h / 12;
+        let startX = ethosblob.x - (bw / 2); // Move left by half the width
+        let startY = ethosblob.y - (bh / 2);
+
+        if (
+            mouseX > startX &&
+            mouseX < startX + bw &&
+            mouseY > startY &&
+            mouseY < startY + bh
+        ) {
+            resetethos();
+            points++;
+        }
     }
-}
 
+}
 
 
 
@@ -254,9 +277,9 @@ function redKeyPressed(event) {
     }
 }
 
-/**
- * This will be called whenever the mouse is pressed while the red variation is active
- */
-function redMousePressed() {
+// /**
+//  * This will be called whenever the mouse is pressed while the red variation is active
+//  */
+// function redMousePressed() {
 
-}
+// }

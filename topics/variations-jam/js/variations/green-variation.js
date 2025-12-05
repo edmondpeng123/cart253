@@ -358,7 +358,7 @@ function healthbar() {
 // }
 // const anxiety = thoughtData.anxiety;
 let thoughts = [];
-let totalThoughts = 30; // quantity of thoughts popping up
+let totalThoughts = 35; // quantity of thoughts popping up
 
 function thoughtsdraw() {
 
@@ -412,7 +412,7 @@ function newThought() {
         y: random(50, height - 50), // start side of screen
         w: 250,
         h: 20,
-        speed: random(1, 4),
+        speed: random(1, 5),
         text: random(thoughtData.anxiety),
     };
 }
