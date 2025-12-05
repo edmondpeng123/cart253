@@ -10,6 +10,8 @@ let size = [];
 let points = 0;
 
 let gamelose = false;
+var timebar = 10;
+var maxtimebar = 200;
 
 var screen = "start";
 
@@ -21,6 +23,14 @@ let ethosblob = {
     h: 350
 
 }
+
+const time = {
+    x: 960,
+    y: 20,
+    w: 20,
+    h: 200,
+}
+
 
 const introtitle = 'Design ethos? Where?'
 
@@ -148,6 +158,7 @@ function mainsearch() {
     // resetethos();
     pointshow();
     // mousePressed();
+    timerbar();
 
 
 }
@@ -267,9 +278,29 @@ function redMousePressed() {
 }
 
 
+function timerbar() {
+    push();
+  rectMode(CORNER);
+    stroke(0);
+    strokeWeight(1);
+    rect(960, 20, 20, 200);
+    pop();
+
+    push();
+     rectMode(CORNER);
+    stroke(255);
+    strokeWeight(1);
+    fill(0)
+    rect(time.x, time.y, time.w , map(timebar, 0, maxtimebar, 0, 200));
+    pop();
 
 
+    timebar = max(0, timebar - 1);
+}
 
+function outoftime() {
+    
+}
 
 function redKeyPressed(event) {
     if (event.keyCode === 51) {
