@@ -6,7 +6,8 @@ let cols; let rows;
 
 let spacing = 20;
 let scl = 0.15;
-let size = []
+let size = [];
+let points = 0;
 
 let gamelose = false;
 
@@ -143,6 +144,9 @@ function mainsearch() {
 
     ethoshide();
     grid();
+    // resetethos();
+    pointshow();
+    mousePressed();
 
 
 }
@@ -161,15 +165,19 @@ function walls() {
 }
 
 function ethoshide() {
-
-stroke(255);
-strokeWeight(1);
-rect(ethosblob.x, ethosblob.y, ethosblob.w, ethosblob.h)
+    rectMode(CENTER);
 
     push();
-    noStroke();
+    stroke(255);
+    strokeWeight(1);
+    noFill();
+    rect(ethosblob.x, ethosblob.y, ethosblob.w/4, ethosblob.h/8);
+    pop();
+
+    push();
     fill(255);
     text("purpose", ethosblob.w, ethosblob.h);
+    textAlign(CENTER, CENTER);
     pop();
 
 }
@@ -203,6 +211,36 @@ function grid() {
 
 }
 
+function resetethos() {
+ethosblob.x = random(50,900)
+ethosblob.y = random(50,600)
+}
+
+function pointshow() {
+    push();
+    fill(255);
+    rect(width / 2, 60, width/8, 30);
+    pop();
+
+    push();
+    fill(0);
+    noStroke();
+    text("Points: " + points, width / 2, 60);
+    pop();
+}
+
+function mousePressed() {
+
+    if (
+        mouseX > ethosblob.x &&
+        mouseX < ethosblob.x + ethosblob.w / 7 &&
+        mouseY > ethosblob.y &&
+        mouseY < ethosblob.y + ethosblob.h / 11
+    ) {
+        resetethos();
+        points++;
+    }
+}
 
 
 
