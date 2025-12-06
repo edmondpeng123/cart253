@@ -31,6 +31,27 @@ const time = {
     h: 200,
 }
 
+const ethosendtext =  `
+
+
+
+
+
+
+
+
+Time is ticking, but you have all the time that
+you need. Don't stress too much. Stay mindful of 
+your decisions and let yourself flow purposefully. 
+You'll be okay. :-)
+
+Refresh to go back to Menu.
+
+
+
+
+`
+
 
 const introtitle = 'Design ethos? Where?'
 
@@ -176,7 +197,7 @@ function endlose() {
     textFont(titlefont);
     textSize(55);
     textAlign(LEFT, CENTER);
-    text(points, width / 4, height / 2.6);
+    text(points + " steps closer to \n finding your ethos...", width / 4, height / 2.6);
     pop();
 
 
@@ -186,7 +207,7 @@ function endlose() {
     textFont(subfont);
     textSize(12);
     textAlign(LEFT, CENTER);
-    text(ethostext, width / 4, height / 1.9);
+    text(ethosendtext, width / 4, height / 1.9);
     pop();
 }
 
