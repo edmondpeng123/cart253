@@ -143,7 +143,7 @@ function redDraw() {
 
 
 }
-
+//setting the intro screen with title and instructions
 function intro() {
     // whichscreen === "start"
     push();
@@ -239,6 +239,7 @@ function walls() {
 //     pop();
 // }
 
+//making the purpose text box
 function ethoshide() {
     rectMode(CENTER);
 
@@ -286,12 +287,13 @@ function grid() {
 
 
 }
-
+//reset the ethos box to a random position within the window
 function resetethos() {
     ethosblob.x = random(50, 900)
     ethosblob.y = random(50, 600)
 }
 
+//box that show points
 function pointshow() {
     rectMode(CENTER);
     push();
@@ -310,6 +312,7 @@ function pointshow() {
     pop();
 }
 
+//click on collision will proc reset
 function redMousePressed() {
 
 
@@ -363,10 +366,10 @@ function timerbar() {
     rect(time.x, time.y, time.w, time.h);
     pop();
 
-    // Calculate bar height
+    // calculate bar height
     let barH = map(timebar, 0, maxtimebar, 0, time.h);
 
-    // Draw filling bar (shrink down)
+    // drawing filling bar (shrink down)
     push();
     rectMode(CORNER);
     noStroke();
@@ -378,7 +381,7 @@ function timerbar() {
     rect(time.x, newY, time.w, barH);
     pop();
 
-    // decrease timer
+    // decrease timer from top to bottom
     timebar = max(0, timebar - 0.1);
 
 }

@@ -37,7 +37,7 @@ function blueSetup() {
 
 
 
-
+//instructions sidebar with texts
 function sidebar() {
 
 push();
@@ -83,7 +83,7 @@ function blueDraw() {
     sidebar();
 }
 
-
+//making the initial ball
 function you() {
 
     stroke(0);

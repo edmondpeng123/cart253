@@ -29,6 +29,8 @@ Click (3) to Start | Level_3: Design Ethos?
 let thoughtData;
 let titlefont;
 
+
+//preloading the font and the json file for the random thoughts
 function preload() {
     thoughtData = loadJSON("assets/data/thoughts.json");
     titlefont = loadFont('./assets/font/workbench.ttf');
@@ -48,7 +50,7 @@ function menuDraw() {
 
 
 
-
+//writing the main title of the project
     push();
     fill(0);
     noStroke();
@@ -59,6 +61,7 @@ function menuDraw() {
     pop();
 
 
+    //giving a bit of context for the project
     push();
     fill(0);
     noStroke();
@@ -68,7 +71,7 @@ function menuDraw() {
     text(menusubTitle, width / 4, height / 1.9);
     pop();
 
-
+//giving the three different mini-games subtitles
     push();
     fill(0);
     noStroke();

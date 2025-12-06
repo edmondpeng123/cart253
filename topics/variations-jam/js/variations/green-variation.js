@@ -4,6 +4,7 @@ let gameOver = false;
 
 var whichscreen = "startgame";
 
+//making the ego box
 const egoman = {
     x: 500,
     y: 350,
@@ -15,6 +16,8 @@ const egoman = {
 
 let egotext = "Ego";
 
+
+//making the healthbar
 const health = {
     x: 960,
     y: 20,
@@ -88,6 +91,8 @@ function greenSetup() {
 
     // rectMode(CENTER);
 
+
+    //for loops for how many thoughts i want it to appear
     thoughts = [];
     for (let i = 0; i < totalThoughts; i++) {
         thoughts.push(newThought());
@@ -107,9 +112,10 @@ function greenDraw() {
     console.log(thoughtData);
     background(255);
 
+     //setting up the start screen into the main game screen and the end screen
     if (whichscreen === "startgame") {
         startGame()
-        //setting up the start screen into the main game screen and the end screen
+       
     }
     else if (whichscreen === "maingame") {
         mainGame()
@@ -122,7 +128,7 @@ function greenDraw() {
         endScreen();
         return;
     }
-
+//if the healthbar drops to 0, you lose
      if (health.h <= 0) {
         gameOver = true;
     }
@@ -165,14 +171,14 @@ function ego() {
     rect(egoman.x, egoman.y, egoman.w, egoman.h);
 
 
-    textAlign(CENTER, CENTER); // Center text horizontally and vertically
+    textAlign(CENTER, CENTER); // centering the text horizontally and vertically
     fill(255);
     textFont(subfont);
     text(egotext, egoman.x, egoman.y - 2.5);
     pop();
 }
 
-
+//making the startgame text and subtitles with instructions
 function startGame() {
     whichscreen = "startgame";
 
@@ -202,7 +208,7 @@ function startGame() {
     pop();
 
 
-
+//click anywhere ot start the game
     if (mouseIsPressed) {
         whichscreen = "maingame"
     }
@@ -212,6 +218,7 @@ function mainGame() {
 
     fill(255)
 
+    //makes the background square
     push();
     stroke(0);
     strokeWeight(1.6);
@@ -233,6 +240,7 @@ function mainGame() {
     // resetthought();
 }
 
+//endscreen with little text blops
 function endScreen() {
     whichscreen = "endgame";
 
@@ -265,7 +273,7 @@ function endScreen() {
 
 
 
-
+//takes care of the arrow movements on the x value
 function egomovement() {
 
     if (keyIsPressed) {
@@ -285,6 +293,7 @@ function egomovement() {
     }
 }
 
+//takes care of the arrow movements on the y value
 function egomovementy() {
 
     if (keyIsPressed) {
@@ -294,6 +303,7 @@ function egomovementy() {
             egoman.y += 3;
         }
     }
+    //make the egoman stay within the height of the screen
     if (egoman.y > (700 - egoman.h / 2)) {
         egoman.y -= 4;
     } else if (egoman.y < (egoman.h / 2)) {
@@ -301,8 +311,12 @@ function egomovementy() {
     }
 }
 
+
+
 function healthbar() {
 
+
+    //makes the border of healthbar
   push();
   rectMode(CORNER);
     stroke(0);
@@ -435,7 +449,7 @@ function resetThought(t) {
 //   resetThought(t);
 // }
 
-
+//takes care of the collision, calculating the distance of thought bubbles and egoman
 function thoughtscollide(t) {
 
     //console.log(egoman.x - egoman.w / 2 < t.x + t.w / 2)
@@ -446,6 +460,8 @@ function thoughtscollide(t) {
         egoman.y + egoman.h / 2 > t.y - t.h / 2
 
     ) {
+
+        //resets on collision and makes health bar drop by 20
         resetThought(t);
         health.h -= 20;
         console.log(t.text);
