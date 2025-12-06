@@ -154,15 +154,41 @@ function mainsearch() {
 
     ethoshide();
     grid();
-    hoverbox();
+    // hoverbox();
     // resetethos();
     pointshow();
     // mousePressed();
     timerbar();
-
+    outoftime()
 
 }
 
+function endlose() {
+    push();
+    stroke(0);
+    strokeWeight(1.6);
+    rect(width / 2, height / 2, width, height);
+    pop();
+
+    push();
+    fill(0);
+    noStroke();
+    textFont(titlefont);
+    textSize(55);
+    textAlign(LEFT, CENTER);
+    text(points, width / 4, height / 2.6);
+    pop();
+
+
+    push();
+    fill(0);
+    noStroke();
+    textFont(subfont);
+    textSize(12);
+    textAlign(LEFT, CENTER);
+    text(ethostext, width / 4, height / 1.9);
+    pop();
+}
 
 
 function walls() {
@@ -176,13 +202,13 @@ function walls() {
 
 }
 
-function hoverbox() {
-    push();
-    noStroke();
-    noFill();
-    rect(ethosblob.x, ethosblob.y, ethosblob.w / 6, ethosblob.h / 12);
-    pop();
-}
+// function hoverbox() {
+//     push();
+//     noStroke();
+//     noFill();
+//     rect(ethosblob.x, ethosblob.y, ethosblob.w / 6, ethosblob.h / 12);
+//     pop();
+// }
 
 function ethoshide() {
     rectMode(CENTER);
@@ -279,28 +305,28 @@ function redMousePressed() {
 
 
 function timerbar() {
-//     push();
-//   rectMode(CORNER);
-//     stroke(0);
-//     strokeWeight(1);
-//     rect(960, 20, 20, 200);
-//     pop();
+    //     push();
+    //   rectMode(CORNER);
+    //     stroke(0);
+    //     strokeWeight(1);
+    //     rect(960, 20, 20, 200);
+    //     pop();
 
 
-//     let barH = map(timebar, 0, maxtimebar, 0, time.h);
+    //     let barH = map(timebar, 0, maxtimebar, 0, time.h);
 
-//     push();
-//      rectMode(CORNER);
-//     stroke(255);
-//     strokeWeight(1);
-//     fill(0)
-//     rect(time.x, time.y + (time.h - barH), time.w , barH);
-//     pop();
+    //     push();
+    //      rectMode(CORNER);
+    //     stroke(255);
+    //     strokeWeight(1);
+    //     fill(0)
+    //     rect(time.x, time.y + (time.h - barH), time.w , barH);
+    //     pop();
 
 
-//     timebar = max(0, timebar - 1);
+    //     timebar = max(0, timebar - 1);
 
- push();
+    push();
     rectMode(CORNER);
     stroke(0);
     strokeWeight(1);
@@ -324,12 +350,14 @@ function timerbar() {
     pop();
 
     // decrease timer
-    timebar = max(0, timebar - 1);
+    timebar = max(0, timebar - 0.1);
 
 }
 
 function outoftime() {
-  
+    if (timebar <= 0) {
+        gamelose = true
+    }
 }
 
 function redKeyPressed(event) {
