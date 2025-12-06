@@ -10,7 +10,7 @@ let size = [];
 let points = 0;
 
 let gamelose = false;
-var timebar = 10;
+var timebar = 200;
 var maxtimebar = 200;
 
 var screen = "start";
@@ -279,27 +279,57 @@ function redMousePressed() {
 
 
 function timerbar() {
-    push();
-  rectMode(CORNER);
+//     push();
+//   rectMode(CORNER);
+//     stroke(0);
+//     strokeWeight(1);
+//     rect(960, 20, 20, 200);
+//     pop();
+
+
+//     let barH = map(timebar, 0, maxtimebar, 0, time.h);
+
+//     push();
+//      rectMode(CORNER);
+//     stroke(255);
+//     strokeWeight(1);
+//     fill(0)
+//     rect(time.x, time.y + (time.h - barH), time.w , barH);
+//     pop();
+
+
+//     timebar = max(0, timebar - 1);
+
+ push();
+    rectMode(CORNER);
     stroke(0);
     strokeWeight(1);
-    rect(960, 20, 20, 200);
+    noFill();
+    rect(time.x, time.y, time.w, time.h);
     pop();
 
+    // Calculate bar height
+    let barH = map(timebar, 0, maxtimebar, 0, time.h);
+
+    // Draw filling bar (shrink down)
     push();
-     rectMode(CORNER);
-    stroke(255);
-    strokeWeight(1);
-    fill(0)
-    rect(time.x, time.y, time.w , map(timebar, 0, maxtimebar, 0, 200));
+    rectMode(CORNER);
+    noStroke();
+    fill(0);
+
+    // shift y so bar shrinks from the top
+    let newY = time.y + (time.h - barH);
+
+    rect(time.x, newY, time.w, barH);
     pop();
 
-
+    // decrease timer
     timebar = max(0, timebar - 1);
+
 }
 
 function outoftime() {
-    
+  
 }
 
 function redKeyPressed(event) {
