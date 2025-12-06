@@ -63,7 +63,10 @@ const ethostext = `
 
 
 
+
+
 Objective: Find your design ethos with the mouse
+and click on it. Continue searching for your purpose.
 
 Click anywhere to Start          (3)Back to Menu
 
@@ -73,6 +76,9 @@ Where do you see yourself in 5 years?
 Where do you see yourself in 10 years?
 What is your purpose in this program?
 What is your purpose for life?
+What are you having for dinner tonight?
+Where will you be 15 minutes from now?
+What? When? Where? How?
 
 
 `
@@ -185,6 +191,8 @@ function mainsearch() {
 }
 
 function endlose() {
+
+    // background(0);
     push();
     stroke(0);
     strokeWeight(1.6);
@@ -197,7 +205,7 @@ function endlose() {
     textFont(titlefont);
     textSize(55);
     textAlign(LEFT, CENTER);
-    text(points + " steps closer to \n finding your ethos...", width / 4, height / 2.6);
+    text(points + " step(s) closer to \n finding your ethos...", width / 4, height / 2.6);
     pop();
 
 
